@@ -1,0 +1,35 @@
+Gabriele & Eugenio
+
+cub3D_project/
+│
+├── src/                 (Cartella contenente i file sorgente)
+│   ├── main.c           (File principale, punto di ingresso del programma)
+│   ├── game.c           (File per la logica del gioco)
+│   ├── graphics.c       (File per la gestione della grafica)
+│   ├── input.c          (File per la gestione degli input utente)
+│   ├── map.c            (File per la gestione della mappa)
+│   ├── parsing.c        (File per il parsing dei file di configurazione)
+│   ├── utils.c          (File di utilità con funzioni ausiliarie)
+│   └── Makefile         (File per la compilazione del progetto)
+│
+├── includes/            (Cartella contenente gli header file)
+│   ├── cub3d.h          (Header file principale)
+│   └── ...              (Altri header file necessari)
+│
+├── textures/            (Cartella contenente le texture delle pareti)
+│   ├── wall_1.xpm
+│   ├── wall_2.xpm
+│   └── ...
+│
+├── scenes/              (Cartella contenente i file di configurazione delle scene)
+│   ├── scene1.cub
+│   ├── scene2.cub
+│   └── ...
+│
+├── lib/                 (Cartella contenente le librerie esterne)
+│   ├── minilibx/
+│   │   ├── libmlx.a     (Libreria miniLibX)
+│   │   └── ...
+│   └── ...
+│
+└── README.md            (File di documentazione del progetto)
