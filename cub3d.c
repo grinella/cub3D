@@ -7,5 +7,6 @@ int	main(int argc, char **argv)
 		printf("Error: wrong number of arguments\n");
 		return (-1);
 	}
+	init(argv[1]);
 	return (0);
 }

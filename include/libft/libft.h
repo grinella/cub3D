@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecaruso <ecaruso@student.42.fr>            +#+  +:+       +#+        */
+/*   By: grinella <grinella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 19:17:23 by ecaruso           #+#    #+#             */
-/*   Updated: 2023/02/10 17:48:29 by ecaruso          ###   ########.fr       */
+/*   Updated: 2024/04/15 18:05:33 by grinella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+# include "get_next_line.h"
 # undef INT_MIN
 # undef INT_MAX
 
