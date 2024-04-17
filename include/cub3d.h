@@ -2,7 +2,7 @@
 # define CUB3D_H
 
 # include "libft/libft.h"
-# include <stdint.h>
-# include <stdio.h>
+
+void	init(char *s);
 
 #endif

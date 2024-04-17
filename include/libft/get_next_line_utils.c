@@ -6,11 +6,11 @@
 /*   By: grinella <grinella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:29:06 by grinella          #+#    #+#             */
-/*   Updated: 2024/04/15 18:00:03 by grinella         ###   ########.fr       */
+/*   Updated: 2024/04/16 10:28:27 by grinella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*ft_strjoin1(char *s1, char const *s2)
 {

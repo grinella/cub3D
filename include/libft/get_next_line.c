@@ -6,11 +6,11 @@
 /*   By: grinella <grinella@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:56:58 by grinella          #+#    #+#             */
-/*   Updated: 2024/04/15 17:56:58 by grinella         ###   ########.fr       */
+/*   Updated: 2024/04/16 10:28:18 by grinella         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static char	*get_forline(char *str)
 {

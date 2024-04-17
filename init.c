@@ -2,7 +2,10 @@
 
 void	check_file_map(int fd)
 {
-	char	**mtr;
+	char	*str;
+
+	str = get_next_line(fd);
+	printf("str [%s] \n", str);
 }
 
 void	check_extention(char *s)
@@ -11,7 +14,7 @@ void	check_extention(char *s)
 
 	i = ft_strlen(s);
 	if (s[i - 1] != 'b' && s[i - 2] != 'u' && s[i - 3] != 'c'
-		&& s[i - 4] != '.' &&)
+			&& s[i - 4] != '.')
 	{
 		printf("Error: mappa non giocabile\n");
 		exit(1);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ecaruso <ecaruso@student.42.fr>            +#+  +:+       +#+         #
+#    By: grinella <grinella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 18:50:23 by ecaruso           #+#    #+#              #
-#    Updated: 2023/02/09 18:35:28 by ecaruso          ###   ########.fr        #
+#    Updated: 2024/04/16 12:18:18 by grinella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,9 @@ SRC = \
 		./ft_putchar_fd.c	\
 		./ft_putstr_fd.c	\
 		./ft_putendl_fd.c	\
-		./ft_putnbr_fd.c
-SRCBONUS= \
+		./ft_putnbr_fd.c	\
+		./get_next_line_utils.c	\
+		./get_next_line.c	\
 		./ft_lstnew.c	\
 		./ft_lstadd_front.c	\
 		./ft_lstsize.c	\
@@ -57,8 +58,6 @@ SRCBONUS= \
 		./ft_lstiter.c	\
 		./ft_lstmap.c
 
-
-OBJBONUS = $(SRCBONUS:%.c=%.o)
 OBJ = $(SRC:%.c=%.o)
 FLAGS = -Wall -Wextra -Werror
 GCC = gcc -c
@@ -67,12 +66,9 @@ all : $(NAME)
 $(NAME) :
 	$(GCC) $(FLAGS) $(SRC) -I.
 	ar rcs $(NAME) $(OBJ)
-
-bonus : $(NAME)
-		$(GCC) $(FLAGS) $(SRCBONUS) -I.
-		ar rcs $(NAME) $(OBJBONUS)
+	
 clean :
-	rm -f $(OBJ) $(OBJBONUS)
+	rm -f $(OBJ)
 
 fclean : clean
 	rm -f $(NAME)
