@@ -1,5 +1,22 @@
 #include "include/cub3d.h"
 
+int	ft_count_line(char *str, char c)
+{
+	int	i;
+	int	r;
+
+	i = 0;
+	r = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			r++;
+		i++;
+	}
+	r++;
+	return (r);
+}
+
 char	*ft_strjoin_free(char *s1, char *s2)
 {
 	size_t	i;
@@ -39,6 +56,7 @@ char	*check_file_map(int fd)
 	while (tmp != NULL)
 	{
 		str = ft_strjoin_free(str, tmp);
+		free(tmp);
 		tmp = get_next_line(fd);
 	}
 	free(tmp);
@@ -58,13 +76,33 @@ void	check_extention(char *s)
 	}
 }
 
+void	print_matrix(char **mtr)
+{
+	int	i;
+
+	i = 0;
+	while (mtr[i])
+	{
+		printf("%s", mtr[i]);
+		printf("\n");
+		i++;
+	}
+	return ;
+}
+
 void	init(char *s)
 {
 	int		fd;
+	int		r;
 	char	*str;
+	char	**mtr;
 
 	check_extention(s);
 	fd = open(s, O_RDONLY);
 	str = check_file_map(fd);
-	printf("str = %s\n", str);
+	r = ft_count_line(str, '\n');
+	mtr = malloc(sizeof(char) *(r * sizeof (char *)));
+	mtr = ft_split(str, '\n');
+	free(str);
+	// print_matrix(mtr);
 }
