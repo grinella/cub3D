@@ -1,4 +1,4 @@
-NAME 		=	cub3D
+NAME 		=	cub3d
 
 LIBFT		=	./include/libft/libft.a
 
@@ -76,3 +76,5 @@ fclean : clean
 re : fclean all
 
 .PHONY:		all clean fclean localclean re
+
+# 2>file1.txt valgrind --leak-check=full --show-leak-kinds=all make re | ./cub3d maps/map1.cub 
