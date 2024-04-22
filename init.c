@@ -1,22 +1,22 @@
 #include "include/cub3d.h"
 
 // smistameento informazioni 
-void	ft_sorting_struct(char	**mtr, t_prova	*prova)
+void	ft_sorting_struct(char	**mtr, t_tex	*tex)
 {
 	while (i < 7)
 	{
 		if (ft_strncmp(mtr[i], "NO ./texture/NO.xpm", 20) == 0)
-			prova->NO = ;
+			tex->no = ;
 		if (ft_strncmp(mtr[i], "SO ./texture/SO.xpm", 20) == 0)
-			prova->SO = ;
+			tex->so = ;
 		if (ft_strncmp(mtr[i], "WE ./texture/WE.xpm", 20) == 0)
-			prova->WE = ;
+			tex->we = ;
 		if (ft_strncmp(mtr[i], "EA ./texture/EA.xpm", 20) == 0)
-			prova->EA = ;
+			tex->ea = ;
 		if (ft_strncmp(mtr[i], "F ", 2) == 0)
-			prova->F = ;
+			tex->f = ;
 		if (ft_strncmp(mtr[i], "C ", 2) == 0)
-			prova->C = ;
+			tex->c = ;
 		i++;
 	}
 	controllo_maoppa
