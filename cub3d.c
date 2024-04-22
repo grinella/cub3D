@@ -1,5 +1,10 @@
 #include "include/cub3d.h"
 
+void	init_struct()
+{
+	// init structs
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc != 2)

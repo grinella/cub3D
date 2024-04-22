@@ -1,5 +1,28 @@
 #include "include/cub3d.h"
 
+// smistameento informazioni 
+void	ft_sorting_struct(char	**mtr, t_prova	*prova)
+{
+	while (i < 7)
+	{
+		if (ft_strncmp(mtr[i], "NO ./texture/NO.xpm", 20) == 0)
+			prova->NO = ;
+		if (ft_strncmp(mtr[i], "SO ./texture/SO.xpm", 20) == 0)
+			prova->SO = ;
+		if (ft_strncmp(mtr[i], "WE ./texture/WE.xpm", 20) == 0)
+			prova->WE = ;
+		if (ft_strncmp(mtr[i], "EA ./texture/EA.xpm", 20) == 0)
+			prova->EA = ;
+		if (ft_strncmp(mtr[i], "F ", 2) == 0)
+			prova->F = ;
+		if (ft_strncmp(mtr[i], "C ", 2) == 0)
+			prova->C = ;
+		i++;
+	}
+	controllo_maoppa
+}
+
+//conteggio linee
 int	ft_count_line(char *str, char c)
 {
 	int	i;
@@ -17,6 +40,7 @@ int	ft_count_line(char *str, char c)
 	return (r);
 }
 
+//unione stringhe con free integrato
 char	*ft_strjoin_free(char *s1, char *s2)
 {
 	size_t	i;
@@ -46,6 +70,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	return (ptr);
 }
 
+//check
 char	*check_file_map(int fd)
 {
 	char	*str;
@@ -71,11 +96,12 @@ void	check_extention(char *s)
 	if (s[i - 1] != 'b' && s[i - 2] != 'u' && s[i - 3] != 'c'
 		&& s[i - 4] != '.')
 	{
-		printf("Error: mappa non giocabile\n");
+		printf("Errore: estensione non corretta\n");
 		exit(1);
 	}
 }
 
+//funzione di print delle matrici
 void	print_matrix(char **mtr)
 {
 	int	i;
@@ -87,9 +113,11 @@ void	print_matrix(char **mtr)
 		printf("\n");
 		i++;
 	}
+	printf("\n");
 	return ;
 }
 
+//inizializzazione
 void	init(char *s)
 {
 	int		fd;
@@ -103,6 +131,7 @@ void	init(char *s)
 	r = ft_count_line(str, '\n');
 	mtr = malloc(sizeof(char) *(r * sizeof (char *)));
 	mtr = ft_split(str, '\n');
+	ft_sorting_struct(mtr);
 	free(str);
-	// print_matrix(mtr);
+	print_matrix(mtr);
 }
