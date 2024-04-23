@@ -1,25 +1,59 @@
 #include "include/cub3d.h"
 
+void	controllo_mappa()
+{}
+
+// info per rgb cielo e pavimento
+void	ft_split_atoi_f_c(char *str, t_tex *tex, char c)
+{
+	char	**tmp;
+	char	**tmp1;
+
+	tmp = ft_split(str, ' ');
+	tmp1 = ft_split(tmp[1], ',');
+	if (tmp1[0] != NULL, tmp1[1] != NULL, tmp1[2] != NULL && tmp1[3] == NULL)
+	{
+		if (c == 'f')
+		{
+			tex->f[0] = ft_atoi(tmp1[0]);
+			tex->f[1] = ft_atoi(tmp1[1]);
+			tex->f[2] = ft_atoi(tmp1[2]);
+		}
+		else if (c == 'c')
+		{
+			tex->c[0] = ft_atoi(tmp1[0]);
+			tex->c[1] = ft_atoi(tmp1[1]);
+			tex->c[2] = ft_atoi(tmp1[2]);
+		}
+	}
+	else
+		printf ("Error: rgb not complete");
+	free_mtr(tmp);
+	free_mtr(tmp1);
+	return ;
+}
+
 // smistameento informazioni 
-void	ft_sorting_struct(char	**mtr, t_tex	*tex)
+void	ft_sorting_struct(char **mtr, t_tex *tex, int i)
 {
 	while (i < 7)
 	{
 		if (ft_strncmp(mtr[i], "NO ./texture/NO.xpm", 20) == 0)
-			tex->no = ;
-		if (ft_strncmp(mtr[i], "SO ./texture/SO.xpm", 20) == 0)
-			tex->so = ;
-		if (ft_strncmp(mtr[i], "WE ./texture/WE.xpm", 20) == 0)
-			tex->we = ;
-		if (ft_strncmp(mtr[i], "EA ./texture/EA.xpm", 20) == 0)
-			tex->ea = ;
-		if (ft_strncmp(mtr[i], "F ", 2) == 0)
-			tex->f = ;
-		if (ft_strncmp(mtr[i], "C ", 2) == 0)
-			tex->c = ;
+			tex->no = ft_substr(mtr[i], 3, 16);
+		else if (ft_strncmp(mtr[i], "SO ./texture/SO.xpm", 20) == 0)
+			tex->so = ft_substr(mtr[i], 3, 16);
+		else if (ft_strncmp(mtr[i], "WE ./texture/WE.xpm", 20) == 0)
+			tex->we = ft_substr(mtr[i], 3, 16);
+		else if (ft_strncmp(mtr[i], "EA ./texture/EA.xpm", 20) == 0)
+			tex->ea = ft_substr(mtr[i], 3, 16);
+		else if (ft_strncmp(mtr[i], "F ", 2) == 0)
+			ft_split_atoi_f_c(mtr[i], tex, f);
+		else if (ft_strncmp(mtr[i], "C ", 2) == 0)
+			ft_split_atoi_f_c(mtr[i], tex, f);
 		i++;
 	}
-	controllo_maoppa
+	controllo_variabili(tex);
+	controllo_mappa(mtr);
 }
 
 //conteggio linee
@@ -131,7 +165,7 @@ void	init(char *s)
 	r = ft_count_line(str, '\n');
 	mtr = malloc(sizeof(char) *(r * sizeof (char *)));
 	mtr = ft_split(str, '\n');
-	ft_sorting_struct(mtr);
+	ft_sorting_struct(mtr, tex, 0);
 	free(str);
 	print_matrix(mtr);
 }
