@@ -13,6 +13,6 @@ typedef struct s_tex
 	int		c[3];
 }			t_tex;
 
-void	init(char *s);
+void	init(char *s, t_tex *tex);
 
 #endif

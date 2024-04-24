@@ -1,7 +1,29 @@
 #include "include/cub3d.h"
 
-void	controllo_mappa()
-{}
+void	free_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	if (*matrix == NULL)
+		return ;
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+	matrix = NULL;
+	return ;
+}
+
+// void	controllo_mappa()
+// {}
+
+// void	controllo_variabili(t_tex *tex)
+// {
+// 	if (tex->)
+// }
 
 // info per rgb cielo e pavimento
 void	ft_split_atoi_f_c(char *str, t_tex *tex, char c)
@@ -11,7 +33,8 @@ void	ft_split_atoi_f_c(char *str, t_tex *tex, char c)
 
 	tmp = ft_split(str, ' ');
 	tmp1 = ft_split(tmp[1], ',');
-	if (tmp1[0] != NULL, tmp1[1] != NULL, tmp1[2] != NULL && tmp1[3] == NULL)
+	if (tmp1[0] != NULL && tmp1[1] != NULL
+		&& tmp1[2] != NULL && tmp1[3] == NULL)
 	{
 		if (c == 'f')
 		{
@@ -28,8 +51,8 @@ void	ft_split_atoi_f_c(char *str, t_tex *tex, char c)
 	}
 	else
 		printf ("Error: rgb not complete");
-	free_mtr(tmp);
-	free_mtr(tmp1);
+	free_matrix(tmp);
+	free_matrix(tmp1);
 	return ;
 }
 
@@ -47,13 +70,13 @@ void	ft_sorting_struct(char **mtr, t_tex *tex, int i)
 		else if (ft_strncmp(mtr[i], "EA ./texture/EA.xpm", 20) == 0)
 			tex->ea = ft_substr(mtr[i], 3, 16);
 		else if (ft_strncmp(mtr[i], "F ", 2) == 0)
-			ft_split_atoi_f_c(mtr[i], tex, f);
+			ft_split_atoi_f_c(mtr[i], tex, 'f');
 		else if (ft_strncmp(mtr[i], "C ", 2) == 0)
-			ft_split_atoi_f_c(mtr[i], tex, f);
+			ft_split_atoi_f_c(mtr[i], tex, 'c');
 		i++;
 	}
-	controllo_variabili(tex);
-	controllo_mappa(mtr);
+	// controllo_variabili(tex);
+	// controllo_mappa(mtr);
 }
 
 //conteggio linee
@@ -152,7 +175,7 @@ void	print_matrix(char **mtr)
 }
 
 //inizializzazione
-void	init(char *s)
+void	init(char *s, t_tex *tex)
 {
 	int		fd;
 	int		r;
@@ -163,7 +186,7 @@ void	init(char *s)
 	fd = open(s, O_RDONLY);
 	str = check_file_map(fd);
 	r = ft_count_line(str, '\n');
-	mtr = malloc(sizeof(char) *(r * sizeof (char *)));
+	mtr = malloc(sizeof(char) * r);
 	mtr = ft_split(str, '\n');
 	ft_sorting_struct(mtr, tex, 0);
 	free(str);
