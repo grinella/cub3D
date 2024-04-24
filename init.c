@@ -17,8 +17,36 @@ void	free_matrix(char **matrix)
 	return ;
 }
 
-// void	controllo_mappa()
-// {}
+void	check_mappa(char **mtr)
+{
+	int	r;
+	int	c;
+
+	r = 6;
+	c = 0;
+	while (mtr[r] != NULL)
+	{
+		if (r == 6)
+		{
+			while (mtr[r][c] != '\0')
+			{
+				printf("mtr[%i][%i] = [%c]\n", r, c, mtr[r][c]);
+				if (mtr[r][c] == '1' || mtr[r][c] == ' ')
+					c++;
+				else
+					exit (printf("Errore: mappa non giocabile\n"));
+			}
+			r++;
+		}
+		while (r > 6)
+		{
+			if (mtr[r][c] == '1')
+				c++;
+			else if (mtr[r][c] == '0')
+				check_zero_valid();
+		}
+	}
+}
 
 // void	controllo_variabili(t_tex *tex)
 // {
@@ -76,7 +104,8 @@ void	ft_sorting_struct(char **mtr, t_tex *tex, int i)
 		i++;
 	}
 	// controllo_variabili(tex);
-	// controllo_mappa(mtr);
+	check_mappa(mtr);
+	// posizione_giocatore(mtr);
 }
 
 //conteggio linee
