@@ -5,12 +5,14 @@
 
 typedef struct s_tex
 {
-	char	**no;
-	char	**so;
-	char	**we;
-	char	**ea;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		f[3];
+	int		c[3];
 }			t_tex;
 
-void	init(char *s);
+void	init(char *s, t_tex *tex);
 
 #endif
