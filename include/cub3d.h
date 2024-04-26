@@ -13,6 +13,22 @@ typedef struct s_tex
 	int		c[3];
 }			t_tex;
 
+typedef struct	s_graphic
+{
+	void	*mlx_pointer;
+	void	*mlx_window;
+	//int		size_tile;
+}			t_graphic;
+
+typedef struct s_game
+{
+	t_tex		tex;
+	t_graphic	graphic;
+}			t_game;
+
 void	init(char *s, t_tex *tex);
+
+//GRAPHIC
+void	create_window(t_game game);
 
 #endif

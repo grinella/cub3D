@@ -7,14 +7,14 @@ void	init_struct()
 
 int	main(int argc, char **argv)
 {
-	t_tex	*tex;
+	t_game		game;
 
-	tex = malloc(1 * (sizeof(t_tex)));
 	if (argc != 2)
 	{
 		printf("Error: wrong number of arguments\n");
 		return (-1);
 	}
-	init(argv[1], tex);
+	init(argv[1], game);
+	create_window(game);
 	return (0);
 }
