@@ -33,7 +33,7 @@ all : $(NAME)
 # 8RESET = \033[0m
 # make -C libft all bonus
 
-MINILIBX_PATH = ./mlx
+MINILIBX_PATH = ./minilibx-linux
 MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
 $(NAME): $(OBJ)

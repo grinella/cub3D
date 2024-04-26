@@ -2,7 +2,7 @@
 # define CUB3D_H
 
 # include "libft/libft.h"
-# include "../mlx/mlx.h"
+# include "../minilibx-linux/mlx.h"
 
 typedef struct s_tex
 {
