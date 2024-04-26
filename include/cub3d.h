@@ -26,7 +26,7 @@ typedef struct s_game
 	t_graphic	graphic;
 }			t_game;
 
-void	init(char *s, t_tex *tex);
+void	init(char *s, t_game game);
 
 //GRAPHIC
 void	create_window(t_game game);

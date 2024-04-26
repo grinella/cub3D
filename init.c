@@ -175,7 +175,7 @@ void	print_matrix(char **mtr)
 }
 
 //inizializzazione
-void	init(char *s, t_tex *tex)
+void	init(char *s, t_game game)
 {
 	int		fd;
 	int		r;
