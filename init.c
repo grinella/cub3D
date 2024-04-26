@@ -54,7 +54,7 @@ void	check_mappa(char **mtr)
 // }
 
 // info per rgb cielo e pavimento
-void	ft_split_atoi_f_c(char *str, t_tex *tex, char c)
+void	ft_split_atoi_f_c(char *str, t_game game, char c)
 {
 	char	**tmp;
 	char	**tmp1;
@@ -66,15 +66,15 @@ void	ft_split_atoi_f_c(char *str, t_tex *tex, char c)
 	{
 		if (c == 'f')
 		{
-			tex->f[0] = ft_atoi(tmp1[0]);
-			tex->f[1] = ft_atoi(tmp1[1]);
-			tex->f[2] = ft_atoi(tmp1[2]);
+			game->tex->f[0] = ft_atoi(tmp1[0]);
+			game->tex->f[1] = ft_atoi(tmp1[1]);
+			game->tex->f[2] = ft_atoi(tmp1[2]);
 		}
 		else if (c == 'c')
 		{
-			tex->c[0] = ft_atoi(tmp1[0]);
-			tex->c[1] = ft_atoi(tmp1[1]);
-			tex->c[2] = ft_atoi(tmp1[2]);
+			game->tex->c[0] = ft_atoi(tmp1[0]);
+			game->tex->c[1] = ft_atoi(tmp1[1]);
+			game->tex->c[2] = ft_atoi(tmp1[2]);
 		}
 	}
 	else
@@ -85,22 +85,22 @@ void	ft_split_atoi_f_c(char *str, t_tex *tex, char c)
 }
 
 // smistameento informazioni 
-void	ft_sorting_struct(char **mtr, t_tex *tex, int i)
+void	ft_sorting_struct(char **mtr, t_game game, int i)
 {
 	while (i < 7)
 	{
 		if (ft_strncmp(mtr[i], "NO ./texture/NO.xpm", 20) == 0)
-			tex->no = ft_substr(mtr[i], 3, 16);
+			game->tex->no = ft_substr(mtr[i], 3, 16);
 		else if (ft_strncmp(mtr[i], "SO ./texture/SO.xpm", 20) == 0)
-			tex->so = ft_substr(mtr[i], 3, 16);
+			game->tex->so = ft_substr(mtr[i], 3, 16);
 		else if (ft_strncmp(mtr[i], "WE ./texture/WE.xpm", 20) == 0)
-			tex->we = ft_substr(mtr[i], 3, 16);
+			game->tex->we = ft_substr(mtr[i], 3, 16);
 		else if (ft_strncmp(mtr[i], "EA ./texture/EA.xpm", 20) == 0)
-			tex->ea = ft_substr(mtr[i], 3, 16);
+			game->tex->ea = ft_substr(mtr[i], 3, 16);
 		else if (ft_strncmp(mtr[i], "F ", 2) == 0)
 			ft_split_atoi_f_c(mtr[i], tex, 'f');
 		else if (ft_strncmp(mtr[i], "C ", 2) == 0)
-			ft_split_atoi_f_c(mtr[i], tex, 'c');
+			ft_split_atoi_f_c(mtr[i], game, 'c');
 		i++;
 	}
 	// controllo_variabili(tex);
@@ -204,7 +204,7 @@ void	print_matrix(char **mtr)
 }
 
 //inizializzazione
-void	init(char *s, t_tex *tex)
+void	init(char *s, t_game game)
 {
 	int		fd;
 	int		r;
@@ -217,7 +217,9 @@ void	init(char *s, t_tex *tex)
 	r = ft_count_line(str, '\n');
 	mtr = malloc(sizeof(char) * r);
 	mtr = ft_split(str, '\n');
-	ft_sorting_struct(mtr, tex, 0);
+	ft_sorting_struct(mtr, game, 0);
 	free(str);
 	print_matrix(mtr);
+	free_matrix(mtr);
+	close(fd);
 }
