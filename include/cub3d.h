@@ -30,6 +30,6 @@ typedef struct s_game
 void	init(char *s, t_game game);
 
 //GRAPHIC
-void	create_window(t_game game);
+void	create_window(t_game *game);
 
 #endif
