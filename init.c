@@ -85,22 +85,22 @@ void	ft_split_atoi_f_c(char *str, t_game *game, char c)
 }
 
 // smistameento informazioni 
-void	ft_sorting_struct(char **mtr, t_game game, int i)
+void	ft_sorting_struct(t_game *game, int i)
 {
 	while (i < 7)
 	{
-		if (ft_strncmp(mtr[i], "NO ./texture/NO.xpm", 20) == 0)
-			game.tex.no = ft_substr(mtr[i], 3, 16);
-		else if (ft_strncmp(mtr[i], "SO ./texture/SO.xpm", 20) == 0)
-			game.tex.so = ft_substr(mtr[i], 3, 16);
-		else if (ft_strncmp(mtr[i], "WE ./texture/WE.xpm", 20) == 0)
-			game.tex.we = ft_substr(mtr[i], 3, 16);
-		else if (ft_strncmp(mtr[i], "EA ./texture/EA.xpm", 20) == 0)
-			game.tex.ea = ft_substr(mtr[i], 3, 16);
-		else if (ft_strncmp(mtr[i], "F ", 2) == 0)
-			ft_split_atoi_f_c(mtr[i], &game, 'f');
-		else if (ft_strncmp(mtr[i], "C ", 2) == 0)
-			ft_split_atoi_f_c(mtr[i], &game, 'c');
+		if (ft_strncmp(game->map[i], "NO ./texture/NO.xpm", 20) == 0)
+			game->tex.no = ft_substr(game->map[i], 3, 16);
+		else if (ft_strncmp(game->map[i], "SO ./texture/SO.xpm", 20) == 0)
+			game->tex.so = ft_substr(game->map[i], 3, 16);
+		else if (ft_strncmp(game->map[i], "WE ./texture/WE.xpm", 20) == 0)
+			game->tex.we = ft_substr(game->map[i], 3, 16);
+		else if (ft_strncmp(game->map[i], "EA ./texture/EA.xpm", 20) == 0)
+			game->tex.ea = ft_substr(game->map[i], 3, 16);
+		else if (ft_strncmp(game->map[i], "F ", 2) == 0)
+			ft_split_atoi_f_c(game->map[i], game, 'f');
+		else if (ft_strncmp(game->map[i], "C ", 2) == 0)
+			ft_split_atoi_f_c(game->map[i], game, 'c');
 		i++;
 	}
 	// controllo_variabili(tex);
@@ -204,22 +204,19 @@ void	print_matrix(char **mtr)
 }
 
 //inizializzazione
-void	init(char *s, t_game game)
+void	init(char *s, t_game *game)
 {
 	int		fd;
 	int		r;
 	char	*str;
-	char	**mtr;
 
 	check_extention(s);
 	fd = open(s, O_RDONLY);
 	str = check_file_map(fd);
 	r = ft_count_line(str, '\n');
-	mtr = malloc(sizeof(char) * r);
-	mtr = ft_split(str, '\n');
-	ft_sorting_struct(mtr, game, 0);
+	game->map = malloc(sizeof(char) * r);
+	game->map = ft_split(str, '\n');
+	ft_sorting_struct(game, 0);
 	free(str);
-	print_matrix(mtr);
-	free_matrix(mtr);
 	close(fd);
 }

@@ -18,7 +18,7 @@ OBJ 		= 	$(SRC:%.c=%.o)
 # 	$(CC) $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ)  -L$(MLX_DIR)/libmlx.a -L ./mlx_linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o 
+	$(CC) $(OBJ) $(FLAGS) -L$(MLX_DIR)/libmlx.a -L ./mlx_linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o 
 
 
 all : $(NAME)

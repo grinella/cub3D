@@ -5,16 +5,24 @@ void	init_struct()
 	// init structs
 }
 
-void	close_window(t_game *game)
+int	close_window(t_game *game)
 {
 	mlx_destroy_window(game->graphic.mlx_pointer, game->graphic.mlx_window);
-	exit(0);
 	//free_all
+	exit(0);
+	return (0);
+}
+
+int	key_press(int key, t_game *game)
+{
+	if (key == 65307)
+		close_window(game);
 }
 
 void	mlx_keys(t_game *game)
 {
 	mlx_hook(game->graphic.mlx_window, 17, 0, close_window, game);
+	mlx_hook(game->graphic.mlx_window, 2, 1L << 0, key_press, game);
 }
 
 int	main(int argc, char **argv)
@@ -26,9 +34,10 @@ int	main(int argc, char **argv)
 		printf("Error: wrong number of arguments\n");
 		return (-1);
 	}
-	init(argv[1], game);
+	init(argv[1], &game);
 	create_window(&game);
 	mlx_keys(&game);
+	print_matrix(game.map);
 	mlx_loop(game.graphic.mlx_pointer);
 	return (0);
 }

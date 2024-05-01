@@ -25,11 +25,21 @@ typedef struct s_game
 {
 	t_tex		tex;
 	t_graphic	graphic;
+	char		**map; //allocata
 }			t_game;
 
-void	init(char *s, t_game game);
+typedef struct s_pcoords
+{
+	double	x;
+	double	y;
+}			t_pcoords;
+
+void	init(char *s, t_game *game);
 
 //GRAPHIC
 void	create_window(t_game *game);
+
+//UTILS
+void	print_matrix(char **mtr);
 
 #endif
