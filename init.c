@@ -1,22 +1,5 @@
 #include "include/cub3d.h"
 
-void	free_matrix(char **matrix)
-{
-	int	i;
-
-	i = 0;
-	if (*matrix == NULL)
-		return ;
-	while (matrix[i])
-	{
-		free(matrix[i]);
-		i++;
-	}
-	free(matrix);
-	matrix = NULL;
-	return ;
-}
-
 // void	check_mappa(char **mtr)
 // {
 // 	int	r;
@@ -108,54 +91,6 @@ void	ft_sorting_struct(t_game *game, int i)
 	// posizione_giocatore(mtr);
 }
 
-//conteggio linee
-int	ft_count_line(char *str, char c)
-{
-	int	i;
-	int	r;
-
-	i = 0;
-	r = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			r++;
-		i++;
-	}
-	r++;
-	return (r);
-}
-
-//unione stringhe con free integrato
-char	*ft_strjoin_free(char *s1, char *s2)
-{
-	size_t	i;
-	size_t	j;
-	char	*ptr;
-
-	if (!(s1 && s2))
-		return (NULL);
-	ptr = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-	{
-		ptr[i] = s2[j];
-		i++;
-		j++;
-	}
-	ptr[i] = '\0';
-	free(s1);
-	return (ptr);
-}
-
 //check
 char	*check_file_map(int fd)
 {
@@ -187,22 +122,6 @@ void	check_extention(char *s)
 	}
 }
 
-//funzione di print delle matrici
-void	print_matrix(char **mtr)
-{
-	int	i;
-
-	i = 0;
-	while (mtr[i])
-	{
-		printf("%s", mtr[i]);
-		printf("\n");
-		i++;
-	}
-	printf("\n");
-	return ;
-}
-
 //inizializzazione
 void	init(char *s, t_game *game)
 {
@@ -210,6 +129,8 @@ void	init(char *s, t_game *game)
 	int		r;
 	char	*str;
 
+
+	init_struct(game);
 	check_extention(s);
 	fd = open(s, O_RDONLY);
 	str = check_file_map(fd);

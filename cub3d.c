@@ -1,8 +1,32 @@
 #include "include/cub3d.h"
 
-void	init_struct()
+void	player_pos(t_game *game)
 {
-	// init structs
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while(game->map[x])
+	{
+		while(game->map[x][y])
+		{
+			if (game->map[x][y] == 'N' || game->map[x][y] == 'S' || game->map[x][y] == 'E' || game->map[x][y] == 'W')
+			{
+				game->pcoords.x = x;
+				game->pcoords.y = y;
+			}
+			y++;
+		}
+		y = 0;
+		x++;
+	}
+}
+
+void	init_struct(t_game *game)
+{
+	player_pos(game);
+
 }
 
 int	close_window(t_game *game)
@@ -27,7 +51,7 @@ void	mlx_keys(t_game *game)
 
 int	main(int argc, char **argv)
 {
-	t_game		game;
+	t_game	game;
 
 	if (argc != 2)
 	{
@@ -38,6 +62,7 @@ int	main(int argc, char **argv)
 	create_window(&game);
 	mlx_keys(&game);
 	print_matrix(game.map);
+	printf("pl_coords: %f, %f\n", game.pcoords.x, game.pcoords.y);
 	mlx_loop(game.graphic.mlx_pointer);
 	return (0);
 }

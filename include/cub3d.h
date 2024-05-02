@@ -1,6 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <math.h>
 # include "libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 
@@ -21,18 +22,20 @@ typedef struct	s_graphic
 	//int		size_tile;
 }			t_graphic;
 
-typedef struct s_game
-{
-	t_tex		tex;
-	t_graphic	graphic;
-	char		**map; //allocata
-}			t_game;
-
 typedef struct s_pcoords
 {
 	double	x;
 	double	y;
 }			t_pcoords;
+
+typedef struct s_game
+{
+	t_tex		tex;
+	t_graphic	graphic;
+	t_pcoords	pcoords;
+	char		**map; //allocata
+}			t_game;
+
 
 void	init(char *s, t_game *game);
 
@@ -41,5 +44,9 @@ void	create_window(t_game *game);
 
 //UTILS
 void	print_matrix(char **mtr);
+char	*ft_strjoin_free(char *s1, char *s2);
+int		ft_count_line(char *str, char c);
+void	free_matrix(char **matrix);
+void	init_struct(t_game *game);
 
 #endif

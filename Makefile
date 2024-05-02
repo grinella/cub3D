@@ -9,16 +9,17 @@ RM			=	rm -f
 SRC			=	\
 					cub3d.c	\
 					graphics.c \
-					init.c
+					init.c \
+					utils/utils.c
 
 OBJ 		= 	$(SRC:%.c=%.o)
- MLX_DIR = mlx
+MLX_DIR 	=	mlx
 
 # %.o: %.c
 # 	$(CC) $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) $(FLAGS) -L$(MLX_DIR)/libmlx.a -L ./mlx_linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o 
+#$(NAME): $(OBJ)
+#	$(CC) $(FLAGS) $(OBJ) -L$(MLX_DIR)/libmlx.a -L ./mlx_linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz -o 
 
 
 all : $(NAME)
@@ -38,7 +39,7 @@ MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
 $(NAME): $(OBJ)
 		make -C include/libft
-		$(CC) $(OBJ) $(LIBFT) $(MINILIBX) -L ./libft -L ./minilibx-linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+		$(CC) $(FLAGS) $(OBJ) $(LIBFT) $(MINILIBX) -L ./libft -L ./minilibx-linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 		@echo "\nLinked into executable \033[0;32mcub3d\033[0m."
 		@echo   "\033[0;31m""          _____                    _____                    _____                    _____                    _____			"
 		@echo "\033[0;31;1m""         /\    \                  /\    \                  /\    \                  /\    \                  /\    \			"
