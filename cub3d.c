@@ -7,9 +7,9 @@ void	player_pos(t_game *game)
 
 	x = 0;
 	y = 0;
-	while(game->map[x])
+	while (game->map[x])
 	{
-		while(game->map[x][y])
+		while (game->map[x][y])
 		{
 			if (game->map[x][y] == 'N' || game->map[x][y] == 'S' || game->map[x][y] == 'E' || game->map[x][y] == 'W')
 			{
@@ -23,11 +23,11 @@ void	player_pos(t_game *game)
 	}
 }
 
-void	init_struct(t_game *game)
-{
-	player_pos(game);
+// void	init_struct(t_game *game)
+// {
+// 	player_pos(game);
 
-}
+// }
 
 int	close_window(t_game *game)
 {

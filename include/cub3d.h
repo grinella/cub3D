@@ -4,6 +4,8 @@
 # include <math.h>
 # include "libft/libft.h"
 # include "../minilibx-linux/mlx.h"
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 
 typedef struct s_tex
 {
@@ -48,5 +50,9 @@ char	*ft_strjoin_free(char *s1, char *s2);
 int		ft_count_line(char *str, char c);
 void	free_matrix(char **matrix);
 void	init_struct(t_game *game);
+char	*ft_one_space(char	*str, int s, int f);
+
+//INFO dal .cub
+void	player_pos(t_game *game);
 
 #endif

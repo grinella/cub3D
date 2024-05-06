@@ -31,10 +31,38 @@
 // 	}
 // }
 
-// void	controllo_variabili(t_tex *tex)
-// {
-// 	if (tex->)
-// }
+void	check_variabili(t_game *game, int i)
+{
+	if (ft_strncmp(game->tex.no, "./texture/NO.xpm", 18) != 0)
+		exit (printf("NO TEXTURE NO\n"));
+	if (ft_strncmp(game->tex.so, "./texture/SO.xpm", 18) != 0)
+		exit (printf("NO TEXTURE SO\n"));
+	if (ft_strncmp(game->tex.we, "./texture/WE.xpm", 18) != 0)
+		exit (printf("NO TEXTURE WE\n"));
+	if (ft_strncmp(game->tex.ea, "./texture/EA.xpm", 18) != 0)
+		exit (printf("NO TEXTURE EA\n"));
+	while (i <= 2)
+	{
+		if (game->tex.f[i] >= 255 || game->tex.c[i] >= 255)
+			exit(printf("Error: rgb non valido"));
+		i++;
+	}
+}
+
+void	check_rgb(char **tmp1, int i, int j)
+{
+	while (tmp1[i] != NULL)
+	{
+		if (ft_isdigit(tmp1[i][j]) == 0)
+			exit(printf("RGB Error\n"));
+		j++;
+		if (tmp1[i][j] == '\0')
+		{
+			i++;
+			j = 0;
+		}
+	}
+}
 
 // info per rgb cielo e pavimento
 void	ft_split_atoi_f_c(char *str, t_game *game, char c)
@@ -44,6 +72,7 @@ void	ft_split_atoi_f_c(char *str, t_game *game, char c)
 
 	tmp = ft_split(str, ' ');
 	tmp1 = ft_split(tmp[1], ',');
+	check_rgb(tmp1, 0, 0);
 	if (tmp1[0] != NULL && tmp1[1] != NULL
 		&& tmp1[2] != NULL && tmp1[3] == NULL)
 	{
@@ -60,35 +89,47 @@ void	ft_split_atoi_f_c(char *str, t_game *game, char c)
 			game->tex.c[2] = ft_atoi(tmp1[2]);
 		}
 	}
-	else
-		printf ("Error: rgb not complete");
 	free_matrix(tmp);
 	free_matrix(tmp1);
-	return ;
 }
 
 // smistameento informazioni 
 void	ft_sorting_struct(t_game *game, int i)
 {
-	while (i < 7)
+	char	*str;
+
+	game->tex.no = '\0';
+	game->tex.so = '\0';
+	game->tex.we = '\0';
+	game->tex.ea = '\0';
+	while (i < 6)
 	{
-		if (ft_strncmp(game->map[i], "NO ./texture/NO.xpm", 20) == 0)
-			game->tex.no = ft_substr(game->map[i], 3, 16);
-		else if (ft_strncmp(game->map[i], "SO ./texture/SO.xpm", 20) == 0)
-			game->tex.so = ft_substr(game->map[i], 3, 16);
-		else if (ft_strncmp(game->map[i], "WE ./texture/WE.xpm", 20) == 0)
-			game->tex.we = ft_substr(game->map[i], 3, 16);
-		else if (ft_strncmp(game->map[i], "EA ./texture/EA.xpm", 20) == 0)
-			game->tex.ea = ft_substr(game->map[i], 3, 16);
-		else if (ft_strncmp(game->map[i], "F ", 2) == 0)
-			ft_split_atoi_f_c(game->map[i], game, 'f');
-		else if (ft_strncmp(game->map[i], "C ", 2) == 0)
-			ft_split_atoi_f_c(game->map[i], game, 'c');
+		str = (char *)malloc(21);
+		str = ft_one_space(game->map[i], 0, 0);
+		if (ft_strncmp(str, "NO ./texture/NO.xpm", 20) == 0)
+			game->tex.no = ft_substr(str, 3, 16);
+		else if (ft_strncmp(str, "SO ./texture/SO.xpm", 20) == 0)
+			game->tex.so = ft_substr(str, 3, 16);
+		else if (ft_strncmp(str, "WE ./texture/WE.xpm", 20) == 0)
+			game->tex.we = ft_substr(str, 3, 16);
+		else if (ft_strncmp(str, "EA ./texture/EA.xpm", 20) == 0)
+			game->tex.ea = ft_substr(str, 3, 16);
+		if (ft_strncmp(str, "F ", 2) == 0)
+			ft_split_atoi_f_c(str, game, 'f');
+		else if (ft_strncmp(str, "C ", 2) == 0)
+			ft_split_atoi_f_c(str, game, 'c');
 		i++;
+		free(str);
 	}
-	// controllo_variabili(tex);
+	printf("c[0] = %i\n", game->tex.c[0]);
+	printf("c[1] = %i\n", game->tex.c[1]);
+	printf("c[2] = %i\n", game->tex.c[2]);
+	printf("f[0] = %i\n", game->tex.f[0]);
+	printf("f[1] = %i\n", game->tex.f[1]);
+	printf("f[2] = %i\n", game->tex.f[2]);
+	check_variabili(game, 0);
 	// check_mappa(mtr);
-	// posizione_giocatore(mtr);
+	player_pos(game);
 }
 
 //check
@@ -129,7 +170,7 @@ void	init(char *s, t_game *game)
 	int		r;
 	char	*str;
 
-	init_struct(game);
+	// init_struct(game);
 	check_extention(s);
 	fd = open(s, O_RDONLY);
 	str = check_file_map(fd);
