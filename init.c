@@ -129,7 +129,6 @@ void	init(char *s, t_game *game)
 	int		r;
 	char	*str;
 
-
 	init_struct(game);
 	check_extention(s);
 	fd = open(s, O_RDONLY);
