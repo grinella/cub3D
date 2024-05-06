@@ -4,5 +4,5 @@ void	create_window(t_game *game)
 {
 	game->graphic.mlx_pointer = mlx_init();
 	game->graphic.mlx_window = mlx_new_window(game->graphic.mlx_pointer,
-			1280, 720, "Er_Cubo");
+			WIN_WIDTH, WIN_HEIGHT, "Er_Cubo");
 }

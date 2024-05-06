@@ -23,11 +23,11 @@ void	player_pos(t_game *game)
 	}
 }
 
-void	init_struct(t_game *game)
-{
-	player_pos(game);
+// void	init_struct(t_game *game)
+// {
+// 	player_pos(game);
 
-}
+// }
 
 int	close_window(t_game *game)
 {

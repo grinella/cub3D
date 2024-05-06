@@ -4,6 +4,8 @@
 # include <math.h>
 # include "libft/libft.h"
 # include "../minilibx-linux/mlx.h"
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 
 typedef struct s_tex
 {

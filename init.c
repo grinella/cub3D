@@ -49,6 +49,7 @@ void	ft_split_atoi_f_c(char *str, t_game *game, char c)
 	{
 		if (c == 'f')
 		{
+			// check
 			game->tex.f[0] = ft_atoi(tmp1[0]);
 			game->tex.f[1] = ft_atoi(tmp1[1]);
 			game->tex.f[2] = ft_atoi(tmp1[2]);
@@ -88,7 +89,7 @@ void	ft_sorting_struct(t_game *game, int i)
 	}
 	// controllo_variabili(tex);
 	// check_mappa(mtr);
-	// posizione_giocatore(mtr);
+	player_pos(game);
 }
 
 //check
@@ -130,7 +131,7 @@ void	init(char *s, t_game *game)
 	char	*str;
 
 
-	init_struct(game);
+	// init_struct(game);
 	check_extention(s);
 	fd = open(s, O_RDONLY);
 	str = check_file_map(fd);
