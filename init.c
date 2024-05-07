@@ -89,7 +89,6 @@ void	ft_sorting_struct(t_game *game, int i)
 	}
 	// controllo_variabili(tex);
 	// check_mappa(mtr);
-	player_pos(game);
 }
 
 //check
@@ -130,8 +129,6 @@ void	init(char *s, t_game *game)
 	int		r;
 	char	*str;
 
-
-	// init_struct(game);
 	check_extention(s);
 	fd = open(s, O_RDONLY);
 	str = check_file_map(fd);

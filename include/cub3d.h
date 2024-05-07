@@ -24,22 +24,40 @@ typedef struct	s_graphic
 	//int		size_tile;
 }			t_graphic;
 
-typedef struct s_pcoords
+typedef struct	s_coords
 {
 	double	x;
 	double	y;
-}			t_pcoords;
+}			t_coords;
+
+typedef struct s_player
+{
+	t_coords	pos;
+	t_coords	dir;
+	t_coords	cam_plane;
+}			t_player;
+
+typedef struct s_ray
+{
+	t_coords	dir;
+}			t_ray;
 
 typedef struct s_game
 {
 	t_tex		tex;
 	t_graphic	graphic;
-	t_pcoords	pcoords;
+	t_player	player;
+	t_ray		ray;
 	char		**map; //allocata
 }			t_game;
 
 
 void	init(char *s, t_game *game);
+void	player_info(t_game *game);
+
+//RAYCAST
+void	start_raycast(t_game *game);
+void	init_raycast(t_game *game);
 
 //GRAPHIC
 void	create_window(t_game *game);
