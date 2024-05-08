@@ -7,11 +7,12 @@ void	player_pos(t_game *game)
 
 	x = 0;
 	y = 0;
-	while (game->map[x])
+	while (game->cub_file[x])
 	{
-		while (game->map[x][y])
+		while (game->cub_file[x][y])
 		{
-			if (game->map[x][y] == 'N' || game->map[x][y] == 'S' || game->map[x][y] == 'E' || game->map[x][y] == 'W')
+			if (game->cub_file[x][y] == 'N' || game->cub_file[x][y] == 'S'
+				|| game->cub_file[x][y] == 'E' || game->cub_file[x][y] == 'W')
 			{
 				game->pcoords.x = x;
 				game->pcoords.y = y;
@@ -61,6 +62,7 @@ int	main(int argc, char **argv)
 	init(argv[1], &game);
 	create_window(&game);
 	mlx_keys(&game);
+	printf("inizio mappa\n\n");
 	print_matrix(game.map);
 	printf("pl_coords: %f, %f\n", game.pcoords.x, game.pcoords.y);
 	mlx_loop(game.graphic.mlx_pointer);

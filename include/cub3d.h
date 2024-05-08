@@ -17,7 +17,7 @@ typedef struct s_tex
 	int		c[3];
 }			t_tex;
 
-typedef struct	s_graphic
+typedef struct s_graphic
 {
 	void	*mlx_pointer;
 	void	*mlx_window;
@@ -35,9 +35,9 @@ typedef struct s_game
 	t_tex		tex;
 	t_graphic	graphic;
 	t_pcoords	pcoords;
-	char		**map; //allocata
+	char		**map; //puntatore all'allocazione di cub_file (guarda funzione init)
+	char		**cub_file; //allocata
 }			t_game;
-
 
 void	init(char *s, t_game *game);
 
@@ -55,4 +55,11 @@ char	*ft_one_space(char	*str, int s, int f);
 //INFO dal .cub
 void	player_pos(t_game *game);
 
+// CHECK
+void	check_zero_nswe(t_game *game, int r, int c);
+void	valid_char(t_game *game, int r, int c, int x);
+void	check_mappa(t_game *g, int r, int c);
+void	check_variabili(t_game *game, int i);
+void	check_rgb(char **tmp1, int i, int j);
+;
 #endif
