@@ -29,7 +29,7 @@ void	ft_split_atoi_f_c(char *str, t_game *game, char c)
 	free_matrix(tmp1);
 }
 
-// smistameento informazioni 
+// smistameento informazioni
 void	ft_sorting_struct(t_game *game, int i)
 {
 	char	*str;
@@ -55,11 +55,11 @@ void	ft_sorting_struct(t_game *game, int i)
 	}
 	check_variabili(game, 0);
 	check_mappa(game, 0, 0);
-	player_pos(game);
+	player_pos(game, 0);
 }
 
 //check
-char	*check_file_map(int fd)
+char	*cubfile(int fd)
 {
 	char	*str;
 	char	*tmp;
@@ -89,6 +89,35 @@ void	check_extention(char *s)
 	}
 }
 
+void	check_validity(char *str, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j < 6)
+	{
+		printf("str[%i] == [%c]\n", i, str[i]);
+		while (str[i] == ' ' || str[i] == '\t'
+			|| str[i] == '\v' || str[i] == '\n')
+			i++;
+		if (str[i] != 'N' && str[i] != 'S' && str[i] != 'W' && str[i] != 'E'
+			&& str[i] != 'F' && str[i] != 'C')
+			exit(printf("Error: file non valido\n"));
+		while (str[i] != '\n')
+			i++;
+		j++;
+	}
+	if (str[i] != '\n' || str[i + 1] != '\n')
+		exit(printf("Error: file non valido\n"));
+	i++;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\n' && str[i + 1] == '\n')
+			exit(printf("Error: file non valido\n"));
+		i++;
+	}
+}
+
 //inizializzazione
 void	init(char *s, t_game *game)
 {
@@ -100,10 +129,10 @@ void	init(char *s, t_game *game)
 	game->tex.so = '\0';
 	game->tex.we = '\0';
 	game->tex.ea = '\0';
-	// init_struct(game);
 	check_extention(s);
 	fd = open(s, O_RDONLY);
-	str = check_file_map(fd);
+	str = cubfile(fd);
+	check_validity(str, 0);
 	r = ft_count_line(str, '\n');
 	game->cub_file = malloc(sizeof(char) * r);
 	game->cub_file = ft_split(str, '\n');

@@ -53,7 +53,7 @@ void	init_struct(t_game *game);
 char	*ft_one_space(char	*str, int s, int f);
 
 //INFO dal .cub
-void	player_pos(t_game *game);
+void	player_pos(t_game *game, int flag);
 
 // CHECK
 void	check_zero_nswe(t_game *game, int r, int c);

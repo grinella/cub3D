@@ -53,7 +53,7 @@ void	check_mappa(t_game *g, int r, int c)
 			while (g->map[r][c] != '\0')
 			{
 				c++;
-				valid_char(g, r, c, 3); //va fatta una funzione che freea e esce dal programma
+				valid_char(g, r, c, 3);
 			}
 			r++;
 			c = 0;
@@ -62,7 +62,7 @@ void	check_mappa(t_game *g, int r, int c)
 		while (g->map[r + 1] == NULL)
 		{
 			c++;
-			valid_char(g, r, c, 3); //va fatta una funzione che freea e esce dal programma
+			valid_char(g, r, c, 3);
 			if (g->map[r][c] == '\0')
 				return ;
 		}
