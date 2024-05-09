@@ -39,7 +39,17 @@ typedef struct s_player
 
 typedef struct s_ray
 {
+	double		cameraX;
 	t_coords	dir;
+	t_coords	sideDist;
+	t_coords	deltaDist;
+	int			mapX;
+	int			mapY;
+	double		perpWallDist;
+	int			stepX;
+	int			stepY;
+	int			hit;
+	int			side;
 }			t_ray;
 
 typedef struct s_game
