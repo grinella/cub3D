@@ -10,7 +10,8 @@ SRC			=	\
 					cub3d.c	\
 					graphics.c \
 					init.c \
-					check.c \
+					check/check.c \
+					check/check1.c \
 					utils/utils.c
 
 OBJ 		= 	$(SRC:%.c=%.o)

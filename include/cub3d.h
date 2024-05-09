@@ -61,5 +61,7 @@ void	valid_char(t_game *game, int r, int c, int x);
 void	check_mappa(t_game *g, int r, int c);
 void	check_variabili(t_game *game, int i);
 void	check_rgb(char **tmp1, int i, int j);
-;
+void	check_extention(char *s);
+void	check_validity(char *str, int i);
+
 #endif

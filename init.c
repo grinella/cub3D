@@ -76,48 +76,6 @@ char	*cubfile(int fd)
 	return (str);
 }
 
-void	check_extention(char *s)
-{
-	int	i;
-
-	i = ft_strlen(s);
-	if (s[i - 1] != 'b' && s[i - 2] != 'u' && s[i - 3] != 'c'
-		&& s[i - 4] != '.')
-	{
-		printf("Errore: estensione non corretta\n");
-		exit(1);
-	}
-}
-
-void	check_validity(char *str, int i)
-{
-	int	j;
-
-	j = 0;
-	while (j < 6)
-	{
-		printf("str[%i] == [%c]\n", i, str[i]);
-		while (str[i] == ' ' || str[i] == '\t'
-			|| str[i] == '\v' || str[i] == '\n')
-			i++;
-		if (str[i] != 'N' && str[i] != 'S' && str[i] != 'W' && str[i] != 'E'
-			&& str[i] != 'F' && str[i] != 'C')
-			exit(printf("Error: file non valido\n"));
-		while (str[i] != '\n')
-			i++;
-		j++;
-	}
-	if (str[i] != '\n' || str[i + 1] != '\n')
-		exit(printf("Error: file non valido\n"));
-	i++;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\n' && str[i + 1] == '\n')
-			exit(printf("Error: file non valido\n"));
-		i++;
-	}
-}
-
 //inizializzazione
 void	init(char *s, t_game *game)
 {

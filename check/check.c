@@ -1,5 +1,6 @@
-#include "include/cub3d.h"
+#include "../include/cub3d.h"
 
+// fa il check degli zeri e della posizione del player se é valida
 void	check_zero_nswe(t_game *game, int r, int c)
 {
 	if (game->map[r][c] == '0' || game->map[r][c] == 'N'
