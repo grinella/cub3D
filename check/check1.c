@@ -57,7 +57,7 @@ void	player_pos(t_game *game, int flag)
 				|| game->map[x][y] == 'E' || game->map[x][y] == 'W')
 			{
 				if (flag == 1)
-					exit(printf("Error: doppio punto di spawn\n"));
+					exit(printf("Error: doppio punto di spawn\n"));//va sostituita con una funzione free_exit
 				flag = 1;
 				game->pcoords.x = x;
 				game->pcoords.y = y;
