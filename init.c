@@ -34,9 +34,9 @@ void	ft_sorting_struct(t_game *game, int i)
 {
 	char	*str;
 
+	str = (char *)malloc(21);
 	while (i < 6)
 	{
-		str = (char *)malloc(21);
 		str = ft_one_space(game->cub_file[i], 0, 0);
 		if (ft_strncmp(str, "NO ./texture/NO.xpm", 20) == 0)
 			game->tex.no = ft_substr(str, 3, 16);
