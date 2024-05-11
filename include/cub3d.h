@@ -7,6 +7,15 @@
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 
+//DA CANCELLARE(UNTEXTURED)
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 typedef struct s_tex
 {
 	char	*no;
@@ -50,6 +59,9 @@ typedef struct s_ray
 	int			stepY;
 	int			hit;
 	int			side;
+	int			lineHeight;
+	int			drawStart;
+	int			drawEnd;
 }			t_ray;
 
 typedef struct s_game
@@ -58,6 +70,7 @@ typedef struct s_game
 	t_graphic	graphic;
 	t_player	player;
 	t_ray		ray;
+	t_data		data;//DA CANCELLARE(UNTEXTURED)
 	char		**map; //allocata
 }			t_game;
 
