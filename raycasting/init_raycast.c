@@ -13,7 +13,7 @@ void	set_player_info2(t_game *game, char dir)
 	{
 		game->player.dir.x = 0;
 		game->player.dir.y = -1;
-		game->player.cam_plane.x = 0.66;
+		game->player.cam_plane.x = -0.66;
 		game->player.cam_plane.y = 0;	
 	}
 }

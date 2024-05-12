@@ -51,6 +51,7 @@ void	perform_DDA(t_game *game)
 			game->ray.sideDist.x += game->ray.deltaDist.x;
 			game->ray.mapX += game->ray.stepX;
 			game->ray.side = 0;
+
 		}
 		else
 		{
@@ -69,7 +70,7 @@ void	set_wall_height(t_game *game)
 		game->ray.perpWallDist = (game->ray.sideDist.x - game->ray.deltaDist.x);
 	else
 		game->ray.perpWallDist = (game->ray.sideDist.y - game->ray.deltaDist.y);
-	game->ray.lineHeight = (int)(WIN_HEIGHT / game->ray.perpWallDist);
+	game->ray.lineHeight = WIN_HEIGHT / game->ray.perpWallDist;
 	game->ray.drawStart = -game->ray.lineHeight / 2 + WIN_HEIGHT / 2;
 	if (game->ray.drawStart < 0)
 		game->ray.drawStart = 0;
@@ -102,7 +103,6 @@ void	start_raycast(t_game *game)
 		set_step_and_dist(game);
 		perform_DDA(game);
 		set_wall_height(game);
-		//printf("%i, %i, %i\n", game->ray.drawStart, game->ray.drawEnd, game->ray.lineHeight);
 		while(game->ray.drawStart <= game->ray.drawEnd)
 		{
 			if (game->ray.side == 0)
