@@ -104,6 +104,4 @@ void	start_raycast(t_game *game)
 		}
 		x++;
 	}
-	//FUNZIONE DI MLX, DOPO AVER SETTATO I PIXEL QUESTA LI RENDERIZZA SULLA FINESTRA
-	mlx_put_image_to_window(game->graphic.mlx_pointer, game->graphic.mlx_window, game->data.img, 0, 0);
 }

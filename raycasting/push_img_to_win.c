@@ -21,3 +21,16 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 	dst = game->data.addr + (y * game->data.line_length + x * (game->data.bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
+
+void	fps_counter(t_game *game)
+{
+	double	frame_time;
+
+	frame_time = 0;
+	game->graphic.old_time = game->graphic.time;
+	game->graphic.time = get_time();
+	frame_time = (game->graphic.time - game->graphic.old_time) / 1000.0;
+	game->graphic.fps = ft_itoa(1.0 / frame_time);
+	game->move_speed = frame_time * 5.0;
+	game->rot_speed = frame_time * 3.0;
+}

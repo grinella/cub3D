@@ -2,6 +2,7 @@
 # define CUB3D_H
 
 # include <math.h>
+# include <sys/time.h>
 # include "libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # define WIN_WIDTH 1280
@@ -31,6 +32,9 @@ typedef struct	s_graphic
 	void	*mlx_pointer;
 	void	*mlx_window;
 	//int		size_tile;
+	double	old_time;
+	double	time;
+	char	*fps;
 }			t_graphic;
 
 typedef struct	s_coords
@@ -72,6 +76,8 @@ typedef struct s_game
 	t_ray		ray;
 	t_data		data;//DA CANCELLARE(UNTEXTURED)
 	char		**map; //allocata
+	double		move_speed;
+	double		rot_speed;
 }			t_game;
 
 //GAME
@@ -90,12 +96,14 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 //GRAPHIC
 void	create_window(t_game *game);
 int		close_window(t_game *game);
+void	fps_counter(t_game *game);
 
 //UTILS
-void	print_matrix(char **mtr);
-char	*ft_strjoin_free(char *s1, char *s2);
-int		ft_count_line(char *str, char c);
-void	free_matrix(char **matrix);
-void	init_struct(t_game *game);
+void		print_matrix(char **mtr);
+char		*ft_strjoin_free(char *s1, char *s2);
+int			ft_count_line(char *str, char c);
+void		free_matrix(char **matrix);
+void		init_struct(t_game *game);
+uint64_t	get_time(void);
 
 #endif

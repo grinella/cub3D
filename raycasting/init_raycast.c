@@ -85,16 +85,26 @@ void	init_ray_info(t_game *game)
 	game->ray.lineHeight = 0;
 	game->ray.drawStart = 0;
 	game->ray.drawEnd = 0;
+}
+
+void	init_graphic_info(t_game *game)
+{
 	game->data.img = 0;
 	game->data.addr = 0;
 	game->data.bits_per_pixel = 0;
 	game->data.line_length = 0;
 	game->data.endian = 0;
+	game->graphic.old_time = 0;
+	game->graphic.time = 0;
+	game->graphic.fps = 0;
+	game->move_speed = 0;
+	game->rot_speed = 0;
 }
 
 void	init_raycast(t_game *game)
 {
 	init_ray_info(game);
+	init_graphic_info(game);
 	player_info(game);
 	set_pixel(game);
 }
