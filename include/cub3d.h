@@ -74,16 +74,22 @@ typedef struct s_game
 	char		**map; //allocata
 }			t_game;
 
-
+//GAME
 void	init(char *s, t_game *game);
 void	player_info(t_game *game);
+void	set_keys(t_game *game);
+int		key_press(int key, t_game *game);
 
 //RAYCAST
 void	start_raycast(t_game *game);
 void	init_raycast(t_game *game);
+void	set_pixel(t_game *game);
+int		create_trgb(int t, int r, int g, int b);
+void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 
 //GRAPHIC
 void	create_window(t_game *game);
+int		close_window(t_game *game);
 
 //UTILS
 void	print_matrix(char **mtr);

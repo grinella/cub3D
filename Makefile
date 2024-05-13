@@ -12,7 +12,9 @@ SRC			=	\
 					init.c \
 					utils/utils.c \
 					raycasting/raycast.c \
-					raycasting/init_raycast.c
+					raycasting/init_raycast.c \
+					keybind.c \
+					raycasting/push_img_to_win.c
 
 OBJ 		= 	$(SRC:%.c=%.o)
 MLX_DIR 	=	mlx

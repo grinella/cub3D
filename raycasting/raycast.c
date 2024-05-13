@@ -1,5 +1,6 @@
 #include "../include/cub3d.h"
 
+//CALCOLO DIREZIONE RAGGI
 void	raycast(t_game *game, int *x)
 {
 	game->ray.cameraX = 2 * (*x) / (double)WIN_WIDTH - 1;
@@ -17,6 +18,7 @@ void	raycast(t_game *game, int *x)
 		game->ray.deltaDist.y = fabs(1 / game->ray.dir.y);
 }
 
+//CALCOLO DISTANZA DAL PROSSIMO QUADRATO
 void	set_step_and_dist(t_game *game)
 {
 	if (game->ray.dir.x < 0)
@@ -41,6 +43,7 @@ void	set_step_and_dist(t_game *game)
 	}
 }
 
+//RICERCA MURO
 void	perform_DDA(t_game *game)
 {
 	game->ray.hit = 0;
@@ -64,6 +67,7 @@ void	perform_DDA(t_game *game)
 	}
 }
 
+//CALCOLO ALTEZZA MURO
 void	set_wall_height(t_game *game)
 {
 	if (game->ray.side == 0)
@@ -77,19 +81,6 @@ void	set_wall_height(t_game *game)
 	game->ray.drawEnd = game->ray.lineHeight / 2 + WIN_HEIGHT / 2;
 	if (game->ray.drawEnd >= WIN_HEIGHT)
 		game->ray.drawEnd = WIN_HEIGHT - 1; 
-}
-
-void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = game->data.addr + (y * game->data.line_length + x * (game->data.bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void	start_raycast(t_game *game)
@@ -113,5 +104,6 @@ void	start_raycast(t_game *game)
 		}
 		x++;
 	}
+	//FUNZIONE DI MLX, DOPO AVER SETTATO I PIXEL QUESTA LI RENDERIZZA SULLA FINESTRA
 	mlx_put_image_to_window(game->graphic.mlx_pointer, game->graphic.mlx_window, game->data.img, 0, 0);
 }

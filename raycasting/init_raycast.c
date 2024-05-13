@@ -1,5 +1,6 @@
 #include "../include/cub3d.h"
 
+//TUTTO IL FILE SERVE A INIZIALIZZARE LE INFORMAZIONI PER IL RAYCAST
 void	set_player_info2(t_game *game, char dir)
 {
 	if (dir == 'E')
@@ -84,18 +85,11 @@ void	init_ray_info(t_game *game)
 	game->ray.lineHeight = 0;
 	game->ray.drawStart = 0;
 	game->ray.drawEnd = 0;
-	//pixel_put;
 	game->data.img = 0;
 	game->data.addr = 0;
 	game->data.bits_per_pixel = 0;
 	game->data.line_length = 0;
 	game->data.endian = 0;
-}
-
-void	set_pixel(t_game *game)
-{
-	game->data.img = mlx_new_image(game->graphic.mlx_pointer, WIN_WIDTH, WIN_HEIGHT);
-	game->data.addr = mlx_get_data_addr(game->data.img, &game->data.bits_per_pixel, &game->data.line_length, &game->data.endian);
 }
 
 void	init_raycast(t_game *game)
