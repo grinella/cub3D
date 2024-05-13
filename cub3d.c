@@ -7,6 +7,7 @@ int	raycast_loop(t_game *game)
 	//FUNZIONE DI MLX, DOPO AVER SETTATO I PIXEL QUESTA LI RENDERIZZA SULLA FINESTRA
 	mlx_put_image_to_window(game->graphic.mlx_pointer, game->graphic.mlx_window, game->data.img, 0, 0);
 	mlx_string_put(game->graphic.mlx_pointer, game->graphic.mlx_window,  15, 10, create_trgb(0, 0, 255, 0), game->graphic.fps);
+	free(game->graphic.fps);
 	return(0);
 }
 
