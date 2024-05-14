@@ -138,4 +138,5 @@ void	init(char *s, t_game *game)
 	ft_sorting_struct(game, 0);
 	free(str);
 	close(fd);
+	player_info(game);
 }

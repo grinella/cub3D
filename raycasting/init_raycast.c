@@ -68,23 +68,23 @@ void	player_info(t_game *game)
 
 void	init_ray_info(t_game *game)
 {
-	game->ray.cameraX = 0;
+	game->ray.camera_x = 0;
 	game->ray.dir.x = 0;
 	game->ray.dir.y = 0;
-	game->ray.sideDist.x = 0;
-	game->ray.sideDist.y = 0;
-	game->ray.deltaDist.x = 0;
-	game->ray.deltaDist.y = 0;
-	game->ray.mapX = 0;
-	game->ray.mapY = 0;
-	game->ray.perpWallDist = 0;
-	game->ray.stepX = 0;
-	game->ray.stepY = 0;
+	game->ray.side_dist.x = 0;
+	game->ray.side_dist.y = 0;
+	game->ray.delta_dist.x = 0;
+	game->ray.delta_dist.y = 0;
+	game->ray.map_x = 0;
+	game->ray.map_y = 0;
+	game->ray.perp_wall_dist = 0;
+	game->ray.step_x = 0;
+	game->ray.step_y = 0;
 	game->ray.hit = 0;
 	game->ray.side = 0;
-	game->ray.lineHeight = 0;
-	game->ray.drawStart = 0;
-	game->ray.drawEnd = 0;
+	game->ray.line_height = 0;
+	game->ray.draw_start = 0;
+	game->ray.draw_end = 0;
 }
 
 void	init_graphic_info(t_game *game)
@@ -105,6 +105,5 @@ void	init_raycast(t_game *game)
 {
 	init_ray_info(game);
 	init_graphic_info(game);
-	player_info(game);
 	set_pixel(game);
 }

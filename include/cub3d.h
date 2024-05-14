@@ -7,6 +7,13 @@
 # include "../minilibx-linux/mlx.h"
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define RT 65363
+# define LT 65361
 
 //DA CANCELLARE(UNTEXTURED)
 typedef struct	s_data {
@@ -52,20 +59,20 @@ typedef struct s_player
 
 typedef struct s_ray
 {
-	double		cameraX;
+	double		camera_x;
 	t_coords	dir;
-	t_coords	sideDist;
-	t_coords	deltaDist;
-	int			mapX;
-	int			mapY;
-	double		perpWallDist;
-	int			stepX;
-	int			stepY;
+	t_coords	side_dist;
+	t_coords	delta_dist;
+	int			map_x;
+	int			map_y;
+	double		perp_wall_dist;
+	int			step_x;
+	int			step_y;
 	int			hit;
 	int			side;
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
 }			t_ray;
 
 typedef struct s_game
