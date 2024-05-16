@@ -1,41 +1,5 @@
 #include "include/cub3d.h"
 
-// void	check_mappa(char **mtr)
-// {
-// 	int	r;
-// 	int	c;
-
-// 	r = 6;
-// 	c = 0;
-// 	while (mtr[r] != NULL)
-// 	{
-// 		if (r == 6)
-// 		{
-// 			while (mtr[r][c] != '\0')
-// 			{
-// 				printf("mtr[%i][%i] = [%c]\n", r, c, mtr[r][c]);
-// 				if (mtr[r][c] == '1' || mtr[r][c] == ' ')
-// 					c++;
-// 				else
-// 					exit (printf("Errore: mappa non giocabile\n"));
-// 			}
-// 			r++;
-// 		}
-// 		while (r > 6)
-// 		{
-// 			if (mtr[r][c] == '1')
-// 				c++;
-// 			else if (mtr[r][c] == '0')
-// 				check_zero_valid();
-// 		}
-// 	}
-// }
-
-// void	controllo_variabili(t_tex *tex)
-// {
-// 	if (tex->)
-// }
-
 // info per rgb cielo e pavimento
 void	ft_split_atoi_f_c(char *str, t_game *game, char c)
 {
@@ -44,12 +8,12 @@ void	ft_split_atoi_f_c(char *str, t_game *game, char c)
 
 	tmp = ft_split(str, ' ');
 	tmp1 = ft_split(tmp[1], ',');
+	check_rgb(tmp1, 0, 0);
 	if (tmp1[0] != NULL && tmp1[1] != NULL
 		&& tmp1[2] != NULL && tmp1[3] == NULL)
 	{
 		if (c == 'f')
 		{
-			// check
 			game->tex.f[0] = ft_atoi(tmp1[0]);
 			game->tex.f[1] = ft_atoi(tmp1[1]);
 			game->tex.f[2] = ft_atoi(tmp1[2]);
@@ -61,38 +25,41 @@ void	ft_split_atoi_f_c(char *str, t_game *game, char c)
 			game->tex.c[2] = ft_atoi(tmp1[2]);
 		}
 	}
-	else
-		printf ("Error: rgb not complete");
 	free_matrix(tmp);
 	free_matrix(tmp1);
-	return ;
 }
 
-// smistameento informazioni 
+// smistameento informazioni
 void	ft_sorting_struct(t_game *game, int i)
 {
-	while (i < 7)
+	char	*str;
+
+	str = (char *)malloc(21);
+	while (i < 6)
 	{
-		if (ft_strncmp(game->map[i], "NO ./texture/NO.xpm", 20) == 0)
-			game->tex.no = ft_substr(game->map[i], 3, 16);
-		else if (ft_strncmp(game->map[i], "SO ./texture/SO.xpm", 20) == 0)
-			game->tex.so = ft_substr(game->map[i], 3, 16);
-		else if (ft_strncmp(game->map[i], "WE ./texture/WE.xpm", 20) == 0)
-			game->tex.we = ft_substr(game->map[i], 3, 16);
-		else if (ft_strncmp(game->map[i], "EA ./texture/EA.xpm", 20) == 0)
-			game->tex.ea = ft_substr(game->map[i], 3, 16);
-		else if (ft_strncmp(game->map[i], "F ", 2) == 0)
-			ft_split_atoi_f_c(game->map[i], game, 'f');
-		else if (ft_strncmp(game->map[i], "C ", 2) == 0)
-			ft_split_atoi_f_c(game->map[i], game, 'c');
+		str = ft_one_space(game->cub_file[i], 0, 0);
+		if (ft_strncmp(str, "NO ./texture/NO.xpm", 20) == 0)
+			game->tex.no = ft_substr(str, 3, 16);
+		else if (ft_strncmp(str, "SO ./texture/SO.xpm", 20) == 0)
+			game->tex.so = ft_substr(str, 3, 16);
+		else if (ft_strncmp(str, "WE ./texture/WE.xpm", 20) == 0)
+			game->tex.we = ft_substr(str, 3, 16);
+		else if (ft_strncmp(str, "EA ./texture/EA.xpm", 20) == 0)
+			game->tex.ea = ft_substr(str, 3, 16);
+		if (ft_strncmp(str, "F ", 2) == 0)
+			ft_split_atoi_f_c(str, game, 'f');
+		else if (ft_strncmp(str, "C ", 2) == 0)
+			ft_split_atoi_f_c(str, game, 'c');
 		i++;
+		free(str);
 	}
-	// controllo_variabili(tex);
-	// check_mappa(mtr);
+	check_variabili(game, 0);
+	check_mappa(game, 0, 0);
+	player_pos(game, 0);
 }
 
 //check
-char	*check_file_map(int fd)
+char	*cubfile(int fd)
 {
 	char	*str;
 	char	*tmp;
@@ -109,19 +76,6 @@ char	*check_file_map(int fd)
 	return (str);
 }
 
-void	check_extention(char *s)
-{
-	int	i;
-
-	i = ft_strlen(s);
-	if (s[i - 1] != 'b' && s[i - 2] != 'u' && s[i - 3] != 'c'
-		&& s[i - 4] != '.')
-	{
-		printf("Errore: estensione non corretta\n");
-		exit(1);
-	}
-}
-
 //inizializzazione
 void	init(char *s, t_game *game)
 {
@@ -129,12 +83,18 @@ void	init(char *s, t_game *game)
 	int		r;
 	char	*str;
 
+	game->tex.no = '\0';
+	game->tex.so = '\0';
+	game->tex.we = '\0';
+	game->tex.ea = '\0';
 	check_extention(s);
 	fd = open(s, O_RDONLY);
-	str = check_file_map(fd);
+	str = cubfile(fd);
+	check_validity(str, 0);
 	r = ft_count_line(str, '\n');
-	game->map = malloc(sizeof(char) * r);
-	game->map = ft_split(str, '\n');
+	game->cub_file = malloc(sizeof(char) * r);
+	game->cub_file = ft_split(str, '\n');
+	game->map = game->cub_file + 6;
 	ft_sorting_struct(game, 0);
 	free(str);
 	close(fd);

@@ -34,7 +34,7 @@ typedef struct s_tex
 	int		c[3];
 }			t_tex;
 
-typedef struct	s_graphic
+typedef struct s_graphic
 {
 	void	*mlx_pointer;
 	void	*mlx_window;
@@ -82,12 +82,14 @@ typedef struct s_game
 	t_player	player;
 	t_ray		ray;
 	t_data		data;//DA CANCELLARE(UNTEXTURED)
-	char		**map; //allocata
 	double		move_speed;
 	double		rot_speed;
+	char		**map; //puntatore all'allocazione di cub_file (guarda funzione init)
+	char		**cub_file; //allocata
 }			t_game;
 
 //GAME
+
 void	init(char *s, t_game *game);
 void	player_info(t_game *game);
 void	set_keys(t_game *game);
@@ -112,5 +114,23 @@ int			ft_count_line(char *str, char c);
 void		free_matrix(char **matrix);
 void		init_struct(t_game *game);
 uint64_t	get_time(void);
+void	print_matrix(char **mtr);
+char	*ft_strjoin_free(char *s1, char *s2);
+int		ft_count_line(char *str, char c);
+void	free_matrix(char **matrix);
+void	init_struct(t_game *game);
+char	*ft_one_space(char	*str, int s, int f);
+
+//INFO dal .cub
+void	player_pos(t_game *game, int flag);
+
+// CHECK
+void	check_zero_nswe(t_game *game, int r, int c);
+void	valid_char(t_game *game, int r, int c, int x);
+void	check_mappa(t_game *g, int r, int c);
+void	check_variabili(t_game *game, int i);
+void	check_rgb(char **tmp1, int i, int j);
+void	check_extention(char *s);
+void	check_validity(char *str, int i);
 
 #endif

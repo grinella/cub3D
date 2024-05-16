@@ -81,6 +81,35 @@ void	print_matrix(char **mtr)
 	return ;
 }
 
+//funzione che lascia solo uno spazio sulle linnee delle texture
+char	*ft_one_space(char	*str, int s, int f)
+{
+	char	*fine;
+
+	fine = (char *)malloc(21);
+	while (str[s] == ' ' || str[s] == '\t' || str[s] == '\v')
+		s++;
+	while (str[s] != '\0')
+	{
+		if (str[s] == ' ' || str[s] == '\t' || str[s] == '\v')
+		{
+			fine[f] = ' ';
+			s++;
+			f++;
+			while (str[s] == ' ' || str[s] == '\t' || str[s] == '\v')
+				s++;
+		}
+		else
+		{
+			fine[f] = str[s];
+			s++;
+			f++;
+		}
+	}
+	fine[f] = '\0';
+	return (fine);
+}
+
 uint64_t	get_time(void)
 {
 	struct timeval	tv;

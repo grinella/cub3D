@@ -10,11 +10,13 @@ SRC			=	\
 					cub3d.c	\
 					graphics.c \
 					init.c \
-					utils/utils.c \
 					raycasting/raycast.c \
 					raycasting/init_raycast.c \
 					keybind.c \
-					raycasting/push_img_to_win.c
+					raycasting/push_img_to_win.c \
+					check/check.c \
+					check/check1.c \
+					utils/utils.c
 
 OBJ 		= 	$(SRC:%.c=%.o)
 MLX_DIR 	=	mlx
