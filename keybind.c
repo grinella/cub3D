@@ -2,14 +2,9 @@
 
 void	move_fw(t_game *game)
 {
-	int	new_pos_x;
-	int	new_pos_y;
-
-	new_pos_x = game->player.pos.x + game->player.dir.x * game->move_speed;
-	new_pos_y = game->player.pos.y + game->player.dir.y * game->move_speed;
-	if (game->map[new_pos_x][(int)game->player.pos.y] != '1')
+	if (game->map[(int)(game->player.pos.y + game->player.dir.y * game->move_speed)][(int)game->player.pos.y] != '1')
 		game->player.pos.x += game->player.dir.x * game->move_speed;
-	if (game->map[(int)game->player.pos.x][new_pos_y] != '1')
+	if (game->map[(int)game->player.pos.x][(int)(game->player.pos.y + game->player.dir.y * game->move_speed)] != '1')
 		game->player.pos.y += game->player.dir.y * game->move_speed;
 }
 
@@ -19,6 +14,22 @@ void	move_bw(t_game *game)
 		game->player.pos.x -= game->player.dir.x * game->move_speed;
 	if (game->map[(int)game->player.pos.x][(int)(game->player.pos.y - game->player.dir.y * game->move_speed)] != '1')
 		game->player.pos.y -= game->player.dir.y * game->move_speed;
+}
+
+void	move_r(t_game *game)
+{
+	if (game->map[(int)(game->player.pos.x + game->player.cam_plane.x * game->move_speed)][(int)game->player.pos.y] != '1')
+		game->player.pos.x += game->player.cam_plane.x * game->move_speed;
+	if (game->map[(int)game->player.pos.x][(int)(game->player.pos.y + game->player.cam_plane.y * game->move_speed)] != '1')
+		game->player.pos.y += game->player.cam_plane.y * game->move_speed;
+}
+
+void	move_l(t_game *game)
+{
+	if (game->map[(int)(game->player.pos.x - game->player.cam_plane.x * game->move_speed)][(int)game->player.pos.y] != '1')
+		game->player.pos.x -= game->player.cam_plane.x * game->move_speed;
+	if (game->map[(int)game->player.pos.x][(int)(game->player.pos.y - game->player.cam_plane.y * game->move_speed)] != '1')
+		game->player.pos.y -= game->player.cam_plane.y * game->move_speed;
 }
 
 void	rot_l(t_game *game)
@@ -54,12 +65,12 @@ int	key_press(int key, t_game *game)
 		close_window(game);
 	if (key == W)
 		move_fw(game);
-	//if (key == A)
-	//	move_l(game);
+	if (key == A)
+		move_l(game);
 	if (key == S)
 		move_bw(game);
-	//if (key == D)
-	//	move_r(game);
+	if (key == D)
+		move_r(game);
 	if (key == RT)
 		rot_r(game);
 	if (key == LT)
