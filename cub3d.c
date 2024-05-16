@@ -2,12 +2,20 @@
 
 void clear_image(t_game *game)
 {
-    for (int y = 0; y < WIN_HEIGHT; y++)
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+    while(y < WIN_HEIGHT)
     {
-        for (int x = 0; x < WIN_WIDTH; x++)
+		x = 0;
+        while(x < WIN_WIDTH)
         {
             my_mlx_pixel_put(game, x, y, 0x000000); // Nero
+			x++;
         }
+		y++;
     }
 }
 

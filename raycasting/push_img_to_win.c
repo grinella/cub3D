@@ -31,6 +31,6 @@ void	fps_counter(t_game *game)
 	game->graphic.time = get_time();
 	frame_time = (game->graphic.time - game->graphic.old_time) / 1000.0;
 	game->graphic.fps = ft_itoa(1.0 / frame_time);
-	game->move_speed = frame_time * 5.0;
-	game->rot_speed = frame_time * 3.0;
+	game->move_speed = 0.1;
+	game->rot_speed = 0.08;
 }
