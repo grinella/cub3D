@@ -22,7 +22,7 @@ void clear_image(t_game *game)
 int	raycast_loop(t_game *game)
 {
 	clear_image(game);
-	//mlx_clear_window(game->graphic.mlx_pointer, game->graphic.mlx_window);
+	mlx_clear_window(game->graphic.mlx_pointer, game->graphic.mlx_window);
 	start_raycast(game);
 	fps_counter(game);
 	//FUNZIONE DI MLX, DOPO AVER SETTATO I PIXEL QUESTA LI RENDERIZZA SULLA FINESTRA

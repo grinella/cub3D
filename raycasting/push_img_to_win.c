@@ -22,15 +22,35 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+//SALVAPROCESSORE :D
+void	ft_sleep(uint64_t time)
+{
+	uint64_t	start;
+
+	start = 0;
+	start = get_time();
+	while ((get_time() - start) < time)
+		usleep(time / 10);
+}
+
 void	fps_counter(t_game *game)
 {
 	double	frame_time;
+	int		fps;
 
 	frame_time = 0;
 	game->graphic.old_time = game->graphic.time;
 	game->graphic.time = get_time();
 	frame_time = (game->graphic.time - game->graphic.old_time) / 1000.0;
-	game->graphic.fps = ft_itoa(1.0 / frame_time);
+	fps = (int)(1.0 / frame_time);
+	if (fps > 144)
+	{
+		ft_sleep(((1.0 / 140) - frame_time) * 1000);
+		game->graphic.time = get_time();
+		frame_time = (game->graphic.time - game->graphic.old_time) / 1000.0;
+		fps = (int)(1.0 / frame_time);
+	}
+	game->graphic.fps = ft_itoa(fps);
 	game->move_speed = 0.1;
 	game->rot_speed = 0.08;
 }
