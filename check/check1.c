@@ -67,4 +67,6 @@ void	player_pos(t_game *game, int flag)
 		y = 0;
 		x++;
 	}
+	if (flag != 1)
+		exit (printf("Error: nessun punto di spawn\n"));
 }
