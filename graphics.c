@@ -15,3 +15,21 @@ int	close_window(t_game *game)
 	exit(0);
 	return (0);
 }
+
+void	floor_ceiling_render(t_game *game, int x)
+{
+	int	y;
+
+	y = 0;
+	while (y < game->ray.draw_start)
+	{
+		my_mlx_pixel_put(game, x, y, create_trgb(0, game->tex.c[0], game->tex.c[1], game->tex.c[2]));
+		y++;
+	}
+	y = game->ray.draw_end + 1;
+	while (y <= WIN_HEIGHT)
+	{
+		my_mlx_pixel_put(game, x, y, create_trgb(0, game->tex.f[0], game->tex.f[1], game->tex.f[2]));
+		y++;
+	}
+}

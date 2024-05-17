@@ -106,6 +106,7 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void	create_window(t_game *game);
 int		close_window(t_game *game);
 void	fps_counter(t_game *game);
+void	floor_ceiling_render(t_game *game, int x);
 
 //UTILS
 void		print_matrix(char **mtr);

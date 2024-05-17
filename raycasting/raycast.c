@@ -94,12 +94,13 @@ void	start_raycast(t_game *game)
 		set_step_and_dist(game);
 		perform_DDA(game);
 		set_wall_height(game);
+		floor_ceiling_render(game, x);
 		while(game->ray.draw_start <= game->ray.draw_end)
 		{
 			if (game->ray.side == 0)
-				my_mlx_pixel_put(game, x, game->ray.draw_start, create_trgb(0, 255, 0, 0));
+				my_mlx_pixel_put(game, x, game->ray.draw_start, create_trgb(0, 200, 200, 200));
 			else
-				my_mlx_pixel_put(game, x, game->ray.draw_start, create_trgb(0, 120, 0, 0));
+				my_mlx_pixel_put(game, x, game->ray.draw_start, create_trgb(0, 255, 255, 255));
 			game->ray.draw_start++;
 		}
 		x++;
