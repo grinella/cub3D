@@ -7,6 +7,8 @@
 # include "../minilibx-linux/mlx.h"
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
+# define TEX_WIDTH 64
+# define TEX_HEGIHT 64
 # define ESC 65307
 # define W 119
 # define A 97
@@ -32,6 +34,16 @@ typedef struct s_tex
 	char	*ea;
 	int		f[3];
 	int		c[3];
+	int		x;
+	int		y;
+	int		size;
+	double	wall_x;
+	int		side;
+	void	*wall_n;
+	void	*wall_s;
+	void	*wall_e;
+	void	*wall_w;
+	char	*stored_t[4];
 }			t_tex;
 
 typedef struct s_graphic
@@ -121,6 +133,7 @@ int		ft_count_line(char *str, char c);
 void	free_matrix(char **matrix);
 void	init_struct(t_game *game);
 char	*ft_one_space(char	*str, int s, int f);
+void	init_images(t_game *game);
 
 //INFO dal .cub
 void	player_pos(t_game *game, int flag);

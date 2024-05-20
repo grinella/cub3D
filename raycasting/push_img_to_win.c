@@ -43,9 +43,9 @@ void	fps_counter(t_game *game)
 	game->graphic.time = get_time();
 	frame_time = (game->graphic.time - game->graphic.old_time) / 1000.0;
 	fps = (int)(1.0 / frame_time);
-	if (fps > 144)
+	if (fps > 60)
 	{
-		ft_sleep(((1.0 / 140) - frame_time) * 1000);
+		ft_sleep(((1.0 / 60) - frame_time) * 1000);
 		game->graphic.time = get_time();
 		frame_time = (game->graphic.time - game->graphic.old_time) / 1000.0;
 		fps = (int)(1.0 / frame_time);
