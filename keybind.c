@@ -60,7 +60,6 @@ void	rot_r(t_game *game)
 
 int	key_press(int key, t_game *game)
 {
-	printf("posx:%f posy:%f mv_s:%f rot_s:%f\n", game->player.pos.x, game->player.pos.y, game->move_speed, game->rot_speed);
 	if (key == ESC)
 		close_window(game);
 	if (key == W)

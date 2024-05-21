@@ -125,9 +125,9 @@ void	start_raycast(t_game *game)
 		set_wall_height(game);
 		floor_ceiling_render(game, x);
 		if (game->ray.side == 0)
-			game->tex.wall_x = game->ray.map_y * game->ray.perp_wall_dist *game->ray.dir.y;
+			game->tex.wall_x = game->player.pos.y + game->ray.perp_wall_dist * game->ray.dir.y;
 		else
-			game->tex.wall_x = game->ray.map_x * game->ray.perp_wall_dist *game->ray.dir.x;
+			game->tex.wall_x = game->player.pos.x + game->ray.perp_wall_dist * game->ray.dir.x;
 		game->tex.wall_x -= (int)(game->tex.wall_x);
 		game->tex.x = (int)(game->tex.wall_x * (double)64);
 		game->tex.x = 64 - game->tex.x;

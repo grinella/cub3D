@@ -82,7 +82,6 @@ void	init_images(t_game *game)
 	int	y;
 	int	z;
 	
-	printf("check1\n");
 	game->tex.wall_n = mlx_xpm_file_to_image(game->graphic.mlx_pointer, game->tex.no, &game->tex.size, &game->tex.size);
 	game->tex.wall_s = mlx_xpm_file_to_image(game->graphic.mlx_pointer, game->tex.so, &game->tex.size, &game->tex.size);
 	game->tex.wall_e = mlx_xpm_file_to_image(game->graphic.mlx_pointer, game->tex.ea, &game->tex.size, &game->tex.size);
@@ -91,7 +90,6 @@ void	init_images(t_game *game)
 	game->tex.stored_t[1] = mlx_get_data_addr(game->tex.wall_s, &x, &y, &z);
 	game->tex.stored_t[2] = mlx_get_data_addr(game->tex.wall_e, &x, &y, &z);
 	game->tex.stored_t[3] = mlx_get_data_addr(game->tex.wall_w, &x, &y, &z);
-	printf("check1\n");
 }
 
 //inizializzazione
