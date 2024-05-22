@@ -12,7 +12,7 @@ void	exit_free(t_game *game)
 		free(game->tex.we);
 	if (game->tex.ea)
 		free(game->tex.ea);
-	exit ;
+	exit(0);
 }
 
 void	check_extention(char *s)
