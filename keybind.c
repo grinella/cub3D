@@ -2,7 +2,7 @@
 
 void	move_fw(t_game *game)
 {
-	if (game->map[(int)(game->player.pos.y + game->player.dir.y * game->move_speed)][(int)game->player.pos.y] != '1')
+	if (game->map[(int)(game->player.pos.x + game->player.dir.x * game->move_speed)][(int)game->player.pos.y] != '1')
 		game->player.pos.x += game->player.dir.x * game->move_speed;
 	if (game->map[(int)game->player.pos.x][(int)(game->player.pos.y + game->player.dir.y * game->move_speed)] != '1')
 		game->player.pos.y += game->player.dir.y * game->move_speed;
