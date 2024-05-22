@@ -109,11 +109,3 @@ char	*ft_one_space(char	*str, int s, int f)
 	fine[f] = '\0';
 	return (fine);
 }
-
-uint64_t	get_time(void)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec + (uint64_t)1000) + (tv.tv_usec / 1000));
-}

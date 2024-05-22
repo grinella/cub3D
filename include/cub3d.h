@@ -18,7 +18,8 @@
 # define LT 65361
 
 //DA CANCELLARE(UNTEXTURED)
-typedef struct	s_data {
+typedef struct s_data
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -56,7 +57,7 @@ typedef struct s_graphic
 	char	*fps;
 }			t_graphic;
 
-typedef struct	s_coords
+typedef struct s_coords
 {
 	double	x;
 	double	y;
@@ -93,32 +94,41 @@ typedef struct s_game
 	t_graphic	graphic;
 	t_player	player;
 	t_ray		ray;
-	t_data		data;//DA CANCELLARE(UNTEXTURED)
+	t_data		data;
 	double		move_speed;
 	double		rot_speed;
-	char		**map; //puntatore all'allocazione di cub_file (guarda funzione init)
-	char		**cub_file; //allocata
+	char		**map;
+	char		**cub_file;
 }			t_game;
+//char	**map é un puntatore all'allocazione di cub_file (guarda funzione init)
 
 //GAME
 
-void	init(char *s, t_game *game);
-void	player_info(t_game *game);
-void	set_keys(t_game *game);
-int		key_press(int key, t_game *game);
+void		init(char *s, t_game *game);
+void		player_info(t_game *game);
+void		set_keys(t_game *game);
+int			key_press(int key, t_game *game);
 
 //RAYCAST
-void	start_raycast(t_game *game);
-void	init_raycast(t_game *game);
-void	set_pixel(t_game *game);
-int		create_trgb(int t, int r, int g, int b);
-void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
+void		start_raycast(t_game *game);
+void		init_raycast(t_game *game);
+void		set_pixel(t_game *game);
+int			create_trgb(int t, int r, int g, int b);
+void		my_mlx_pixel_put(t_game *game, int x, int y, int color);
+
+void		init_ray_info(t_game *game);
+void		init_graphic_info(t_game *game);
+void		raycast(t_game *game, int *x);
+void		set_step_and_dist(t_game *game);
+void		perform_dda(t_game *game);
+void		set_wall_height(t_game *game);
+void		render_wall(t_game	*game, int x);
 
 //GRAPHIC
-void	create_window(t_game *game);
-int		close_window(t_game *game);
-void	fps_counter(t_game *game);
-void	floor_ceiling_render(t_game *game, int x);
+void		create_window(t_game *game);
+int			close_window(t_game *game);
+void		fps_counter(t_game *game);
+void		floor_ceiling_render(t_game *game, int x);
 
 //UTILS
 void		print_matrix(char **mtr);
@@ -127,24 +137,37 @@ int			ft_count_line(char *str, char c);
 void		free_matrix(char **matrix);
 void		init_struct(t_game *game);
 uint64_t	get_time(void);
-void	print_matrix(char **mtr);
-char	*ft_strjoin_free(char *s1, char *s2);
-int		ft_count_line(char *str, char c);
-void	free_matrix(char **matrix);
-void	init_struct(t_game *game);
-char	*ft_one_space(char	*str, int s, int f);
-void	init_images(t_game *game);
+void		print_matrix(char **mtr);
+char		*ft_strjoin_free(char *s1, char *s2);
+int			ft_count_line(char *str, char c);
+void		free_matrix(char **matrix);
+void		init_struct(t_game *game);
+char		*ft_one_space(char	*str, int s, int f);
+void		init_images(t_game *game);
 
 //INFO dal .cub
-void	player_pos(t_game *game, int flag);
+void		player_pos(t_game *game, int flag);
 
 // CHECK
-void	check_zero_nswe(t_game *game, int r, int c);
-void	valid_char(t_game *game, int r, int c, int x);
-void	check_mappa(t_game *g, int r, int c);
-void	check_variabili(t_game *game, int i);
-void	check_rgb(char **tmp1, int i, int j);
-void	check_extention(char *s);
-void	check_validity(char *str, int i);
+void		check_zero_nswe(t_game *game, int r, int c);
+void		valid_char(t_game *game, int r, int c, int x);
+void		check_mappa(t_game *g, int r, int c);
+void		check_variabili(t_game *game, int i);
+void		check_rgb(t_game *game, char **tmp1, int i, int j);
+void		check_extention(char *s);
+void		check_validity(t_game *game, char *str, int i);
+
+// KEYBIND
+void		move_fw(t_game *game);
+void		move_bw(t_game *game);
+void		move_r(t_game *game);
+void		move_l(t_game *game);
+void		rot_l(t_game *game);
+void		rot_r(t_game *game);
+int			key_press(int key, t_game *game);
+void		set_keys(t_game *game);
+
+// FREE
+void		exit_free(t_game *game);
 
 #endif

@@ -12,7 +12,9 @@ SRC			=	\
 					init.c \
 					raycasting/raycast.c \
 					raycasting/init_raycast.c \
+					raycasting/player_info.c \
 					keybind.c \
+					keybind1.c \
 					raycasting/push_img_to_win.c \
 					check/check.c \
 					check/check1.c \

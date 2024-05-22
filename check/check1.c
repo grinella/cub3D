@@ -1,5 +1,20 @@
 #include "../include/cub3d.h"
 
+void	exit_free(t_game *game)
+{
+	if (game->cub_file)
+		free_matrix(game->cub_file);
+	if (game->tex.no)
+		free(game->tex.no);
+	if (game->tex.so)
+		free(game->tex.so);
+	if (game->tex.we)
+		free(game->tex.we);
+	if (game->tex.ea)
+		free(game->tex.ea);
+	exit ;
+}
+
 void	check_extention(char *s)
 {
 	int	i;
@@ -13,7 +28,7 @@ void	check_extention(char *s)
 	}
 }
 
-void	check_validity(char *str, int i)
+void	check_validity(t_game *game, char *str, int i)
 {
 	int	j;
 
@@ -26,19 +41,27 @@ void	check_validity(char *str, int i)
 			i++;
 		if (str[i] != 'N' && str[i] != 'S' && str[i] != 'W' && str[i] != 'E'
 			&& str[i] != 'F' && str[i] != 'C')
-			exit(printf("Error: file non valido\n"));
+		{
+			printf("Error: file non valido\n");
+			exit_free(game);
+		}
 		while (str[i] != '\n')
 			i++;
 		j++;
 	}
 	if (str[i] != '\n' || str[i + 1] != '\n')
-		exit(printf("Error: file non valido\n"));
+	{
+		printf("Error: file non valido\n");
+		exit_free(game);
+	}
 	i++;
-	while (str[i] != '\0')
+	while (str[i] != '\0' && i++)
 	{
 		if (str[i] == '\n' && str[i + 1] == '\n')
-			exit(printf("Error: file non valido\n"));
-		i++;
+		{
+			printf("Error: file non valido\n");
+			exit_free(game);
+		}
 	}
 }
 
@@ -57,7 +80,10 @@ void	player_pos(t_game *game, int flag)
 				|| game->map[x][y] == 'E' || game->map[x][y] == 'W')
 			{
 				if (flag == 1)
-					exit(printf("Error: doppio punto di spawn\n"));//va sostituita con una funzione free_exit
+				{
+					printf("Error: doppio punto di spawn\n");
+					exit_free(game);
+				}
 				flag = 1;
 				game->player.pos.x = x;
 				game->player.pos.y = y;
@@ -68,5 +94,8 @@ void	player_pos(t_game *game, int flag)
 		x++;
 	}
 	if (flag != 1)
-	exit (printf("Error: nessun punto di spawn\n"));
+	{
+		printf("Error: nessun punto di spawn\n");
+		exit_free(game);
+	}
 }

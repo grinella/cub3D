@@ -8,7 +8,7 @@ void	ft_split_atoi_f_c(char *str, t_game *game, char c)
 
 	tmp = ft_split(str, ' ');
 	tmp1 = ft_split(tmp[1], ',');
-	check_rgb(tmp1, 0, 0);
+	check_rgb(game, tmp1, 0, 0);
 	if (tmp1[0] != NULL && tmp1[1] != NULL
 		&& tmp1[2] != NULL && tmp1[3] == NULL)
 	{
@@ -82,11 +82,15 @@ void	init_images(t_game *game)
 	int	x;
 	int	y;
 	int	z;
-	
-	game->tex.wall_n = mlx_xpm_file_to_image(game->graphic.mlx_pointer, game->tex.no, &game->tex.size, &game->tex.size);
-	game->tex.wall_s = mlx_xpm_file_to_image(game->graphic.mlx_pointer, game->tex.so, &game->tex.size, &game->tex.size);
-	game->tex.wall_e = mlx_xpm_file_to_image(game->graphic.mlx_pointer, game->tex.ea, &game->tex.size, &game->tex.size);
-	game->tex.wall_w = mlx_xpm_file_to_image(game->graphic.mlx_pointer, game->tex.we, &game->tex.size, &game->tex.size);
+
+	game->tex.wall_n = mlx_xpm_file_to_image(game->graphic.mlx_pointer,
+			game->tex.no, &game->tex.size, &game->tex.size);
+	game->tex.wall_s = mlx_xpm_file_to_image(game->graphic.mlx_pointer,
+			game->tex.so, &game->tex.size, &game->tex.size);
+	game->tex.wall_e = mlx_xpm_file_to_image(game->graphic.mlx_pointer,
+			game->tex.ea, &game->tex.size, &game->tex.size);
+	game->tex.wall_w = mlx_xpm_file_to_image(game->graphic.mlx_pointer,
+			game->tex.we, &game->tex.size, &game->tex.size);
 	game->tex.stored_t[0] = mlx_get_data_addr(game->tex.wall_n, &x, &y, &z);
 	game->tex.stored_t[1] = mlx_get_data_addr(game->tex.wall_s, &x, &y, &z);
 	game->tex.stored_t[2] = mlx_get_data_addr(game->tex.wall_e, &x, &y, &z);
@@ -108,7 +112,7 @@ void	init(char *s, t_game *game)
 	check_extention(s);
 	fd = open(s, O_RDONLY);
 	str = cubfile(fd);
-	check_validity(str, 0);
+	check_validity(game, str, 0);
 	r = ft_count_line(str, '\n');
 	game->cub_file = ft_split(str, '\n');
 	game->map = game->cub_file + 6;
