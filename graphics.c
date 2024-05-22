@@ -12,6 +12,11 @@ int	close_window(t_game *game)
 {
 	mlx_destroy_window(game->graphic.mlx_pointer, game->graphic.mlx_window);
 	//free_all
+	free_matrix(game->cub_file);
+	free(game->tex.no);
+	free(game->tex.so);
+	free(game->tex.we);
+	free(game->tex.ea);
 	exit(0);
 	return (0);
 }

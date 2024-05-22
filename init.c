@@ -34,7 +34,6 @@ void	ft_sorting_struct(t_game *game, int i)
 {
 	char	*str;
 
-	str = (char *)malloc(21);
 	while (i < 6)
 	{
 		str = ft_one_space(game->cub_file[i], 0, 0);
@@ -52,7 +51,9 @@ void	ft_sorting_struct(t_game *game, int i)
 			ft_split_atoi_f_c(str, game, 'c');
 		i++;
 		free(str);
+		str = NULL;
 	}
+	free(str);
 	check_variabili(game, 0);
 	check_mappa(game, 0, 0);
 	player_pos(game, 0);
@@ -109,7 +110,6 @@ void	init(char *s, t_game *game)
 	str = cubfile(fd);
 	check_validity(str, 0);
 	r = ft_count_line(str, '\n');
-	game->cub_file = malloc(sizeof(char) * r);
 	game->cub_file = ft_split(str, '\n');
 	game->map = game->cub_file + 6;
 	ft_sorting_struct(game, 0);
