@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_info.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: grinella <grinella@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/24 15:06:43 by grinella          #+#    #+#             */
+/*   Updated: 2024/05/24 15:06:44 by grinella         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 //TUTTO IL FILE SERVE A INIZIALIZZARE LE INFORMAZIONI PER IL RAYCAST
