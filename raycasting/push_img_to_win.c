@@ -21,7 +21,7 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x <= 0 || x > 1280 || y <= 0 || y > 720)
+	if (x <= 0 || x >= 1280 || y <= 0 || y >= 720)
 		return ;
 	dst = game->data.addr + (y * game->data.line_length + x
 			* (game->data.bits_per_pixel / 8));

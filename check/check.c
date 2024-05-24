@@ -39,7 +39,7 @@ void	valid_char(t_game *g, int r, int c, int x)
 			== 'S' || g->map[r][c] == 'W' || g->map[r][c] == 'E')
 			check_zero_nswe(g, r, c);
 	}
-	if (x == 3)
+	while (x == 3 && g->map[r][c] != '\0')
 	{
 		if (g->map[r][c] != '\0' && g->map[r][c] != ' '
 					&& g->map[r][c] != '1')
@@ -47,6 +47,7 @@ void	valid_char(t_game *g, int r, int c, int x)
 			printf("Error: mappa non valida\n");
 			exit_free(g);
 		}
+		c++;
 	}
 }
 
@@ -58,8 +59,8 @@ void	check_mappa(t_game *g, int r, int c)
 		{
 			while (g->map[r][c] != '\0')
 			{
-				c++;
 				valid_char(g, r, c, 3);
+				c++;
 			}
 			r++;
 			c = 0;

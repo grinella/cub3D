@@ -1,7 +1,7 @@
 #include "../include/cub3d.h"
 
 //TUTTO IL FILE SERVE A INIZIALIZZARE LE INFORMAZIONI PER IL RAYCAST
-void	set_player_info2(t_game *game, char dir)
+void	set_player_info2(t_game *game, char dir, int x, int y)
 {
 	if (dir == 'E')
 	{
@@ -17,12 +17,13 @@ void	set_player_info2(t_game *game, char dir)
 		game->player.cam_plane.x = -0.66;
 		game->player.cam_plane.y = 0;
 	}
+
+	game->player.pos.x = x + 0.1 * -game->player.dir.y;
+	game->player.pos.y = y + 0.1 * -game->player.dir.x;
 }
 
 void	set_player_info(t_game *game, char dir, int x, int y)
 {
-	game->player.pos.x = x;
-	game->player.pos.y = y;
 	if (dir == 'N')
 	{
 		game->player.dir.x = -1;
@@ -37,7 +38,7 @@ void	set_player_info(t_game *game, char dir, int x, int y)
 		game->player.cam_plane.x = 0;
 		game->player.cam_plane.y = -0.66;
 	}
-	set_player_info2(game, dir);
+	set_player_info2(game, dir, x, y);
 }
 
 void	player_info(t_game *game)

@@ -35,7 +35,6 @@ void	check_validity(t_game *game, char *str, int i)
 	j = 0;
 	while (j < 6)
 	{
-		printf("str[%i] == [%c]\n", i, str[i]);
 		while (str[i] == ' ' || str[i] == '\t'
 			|| str[i] == '\v' || str[i] == '\n')
 			i++;

@@ -54,7 +54,6 @@ int	main(int argc, char **argv)
 	create_window(&game);
 	init_images(&game);
 	set_keys(&game);
-	print_matrix(game.map);
 	init_raycast(&game);
 	mlx_loop_hook(game.graphic.mlx_pointer, raycast_loop, &game);
 	mlx_loop(game.graphic.mlx_pointer);
