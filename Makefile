@@ -6,11 +6,11 @@
 #    By: grinella <grinella@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/24 15:07:43 by grinella          #+#    #+#              #
-#    Updated: 2024/05/24 15:07:44 by grinella         ###   ########.fr        #
+#    Updated: 2024/05/24 15:11:39 by grinella         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=	cub3d
+NAME 		=	cub3D
 
 LIBFT		=	./include/libft/libft.a
 
