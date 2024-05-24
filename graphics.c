@@ -10,7 +10,11 @@ void	create_window(t_game *game)
 //unica funzione il cui il programma esce
 int	close_window(t_game *game)
 {
-	mlx_destroy_window(game->graphic.mlx_pointer, game->graphic.mlx_window);
+	mlx_destroy_image(game->graphic.mlx_pointer, game->tex.wall_n);
+	mlx_destroy_image(game->graphic.mlx_pointer, game->tex.wall_s);
+	mlx_destroy_image(game->graphic.mlx_pointer, game->tex.wall_e);
+	mlx_destroy_image(game->graphic.mlx_pointer, game->tex.wall_w);
+	free(game->graphic.mlx_pointer);
 	free_matrix(game->cub_file);
 	free(game->tex.no);
 	free(game->tex.so);
