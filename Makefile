@@ -2,7 +2,7 @@ NAME 		=	cub3d
 
 LIBFT		=	./include/libft/libft.a
 
-CC			=	gcc -g
+CC			=	@gcc -g
 FLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
@@ -46,7 +46,7 @@ MINILIBX_PATH = ./minilibx-linux
 MINILIBX = $(MINILIBX_PATH)/libmlx.a
 
 $(NAME): $(OBJ)
-		make -C include/libft
+		@make -C include/libft
 		$(CC) $(FLAGS) $(OBJ) $(LIBFT) $(MINILIBX) -L ./libft -L ./minilibx-linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 		@echo "\nLinked into executable \033[0;32mcub3d\033[0m."
 		@echo   "\033[0;31m""          _____                    _____                    _____                    _____                    _____			"
@@ -81,12 +81,12 @@ $(NAME): $(OBJ)
                                                                                                                                                                                                                               
 
 clean :
-	make -C include/libft clean
-	$(RM) $(OBJ)
+	@make -C include/libft clean
+	@$(RM) $(OBJ)
 
 fclean : clean
-	make -C include/libft fclean
-	$(RM) $(NAME)
+	@make -C include/libft fclean
+	@$(RM) $(NAME)
 
 re : fclean all
 

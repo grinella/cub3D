@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: grinella <grinella@student.42.fr>          +#+  +:+       +#+         #
+#    By: ecaruso <ecaruso@student.42roma.it>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/19 18:50:23 by ecaruso           #+#    #+#              #
-#    Updated: 2024/04/16 12:18:18 by grinella         ###   ########.fr        #
+#    Updated: 2024/05/24 14:05:30 by ecaruso          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,13 +64,13 @@ GCC = gcc -c
 all : $(NAME)
 
 $(NAME) :
-	$(GCC) $(FLAGS) $(SRC) -I.
-	ar rcs $(NAME) $(OBJ)
+	@$(GCC) $(FLAGS) $(SRC) -I.
+	@ar rcs $(NAME) $(OBJ)
 	
 clean :
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
