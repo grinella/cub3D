@@ -17,7 +17,6 @@ void	set_player_info2(t_game *game, char dir, int x, int y)
 		game->player.cam_plane.x = -0.66;
 		game->player.cam_plane.y = 0;
 	}
-
 	game->player.pos.x = x + 0.1 * -game->player.dir.y;
 	game->player.pos.y = y + 0.1 * -game->player.dir.x;
 }

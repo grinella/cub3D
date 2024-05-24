@@ -168,6 +168,6 @@ int			key_press(int key, t_game *game);
 void		set_keys(t_game *game);
 
 // FREE
-void		exit_free(t_game *game);
+void		exit_free(t_game *game, int error);
 
 #endif

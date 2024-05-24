@@ -1,6 +1,6 @@
 #include "../include/cub3d.h"
 
-void	exit_free(t_game *game)
+void	exit_free(t_game *game, int error)
 {
 	if (game->cub_file)
 		free_matrix(game->cub_file);
@@ -12,6 +12,12 @@ void	exit_free(t_game *game)
 		free(game->tex.we);
 	if (game->tex.ea)
 		free(game->tex.ea);
+	if (error == 1)
+		printf("Almeno un path delle texture non valido\n");
+	if (error == 2)
+		printf("Punto di spawn non valido\n");
+	if (error == 3)
+		printf("Error: file non valido\n");
 	exit(0);
 }
 
@@ -40,27 +46,18 @@ void	check_validity(t_game *game, char *str, int i)
 			i++;
 		if (str[i] != 'N' && str[i] != 'S' && str[i] != 'W' && str[i] != 'E'
 			&& str[i] != 'F' && str[i] != 'C')
-		{
-			printf("Error: file non valido\n");
-			exit_free(game);
-		}
+			exit_free(game, 3);
 		while (str[i] != '\n')
 			i++;
 		j++;
 	}
 	if (str[i] != '\n' || str[i + 1] != '\n')
-	{
-		printf("Error: file non valido\n");
-		exit_free(game);
-	}
+		exit_free(game, 3);
 	i++;
 	while (str[i] != '\0' && i++)
 	{
 		if (str[i] == '\n' && str[i + 1] == '\n')
-		{
-			printf("Error: file non valido\n");
-			exit_free(game);
-		}
+			exit_free(game, 3);
 	}
 }
 
@@ -79,10 +76,7 @@ void	player_pos(t_game *game, int flag)
 				|| game->map[x][y] == 'E' || game->map[x][y] == 'W')
 			{
 				if (flag == 1)
-				{
-					printf("Error: doppio punto di spawn\n");
-					exit_free(game);
-				}
+					exit_free(game, 2);
 				flag = 1;
 				game->player.pos.x = x;
 				game->player.pos.y = y;
@@ -93,8 +87,5 @@ void	player_pos(t_game *game, int flag)
 		x++;
 	}
 	if (flag != 1)
-	{
-		printf("Error: nessun punto di spawn\n");
-		exit_free(game);
-	}
+		exit_free(game, 2);
 }
